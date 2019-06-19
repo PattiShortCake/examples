@@ -1,3 +1,5 @@
 rootProject.name = 'example'
 
 include 'graphql'
+include 'oauth2-resource-server'
+include 'oauth2-server'
