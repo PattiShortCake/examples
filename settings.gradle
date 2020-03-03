@@ -1,5 +1,10 @@
 rootProject.name = 'example'
 
-include 'graphql'
-include 'oauth2-resource-server'
-include 'oauth2-server'
+//include 'aws'
+include 'dependency-manager'
+//include 'graphql'
+//include 'graphql-client'
+//include 'oauth2-resource-server'
+//include 'oauth2-server'
+//include 'spring-cloud-gateway'
+//include 'webflux'

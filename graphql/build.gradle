@@ -1,6 +1,37 @@
-ext {
-    graphQlVersion = '5.9.0'
+plugins {
+    id "io.freefair.lombok" version "4.1.3"
 }
+
+ext {
+    graphQlVersion = '5.10.0'
+}
+
+
+sourceSets {
+    intTest {
+        compileClasspath += sourceSets.main.output
+        runtimeClasspath += sourceSets.main.output
+    }
+}
+
+configurations {
+    intTestImplementation.extendsFrom implementation
+    intTestRuntimeOnly.extendsFrom runtimeOnly
+}
+
+task integrationTest(type: Test) {
+    description = 'Runs integration tests.'
+    group = 'verification'
+
+    testClassesDirs = sourceSets.intTest.output.classesDirs
+    classpath = sourceSets.intTest.runtimeClasspath
+    shouldRunAfter test
+
+    useJUnitPlatform()
+
+}
+
+check.dependsOn integrationTest
 
 dependencies {
 //    implementation("org.springframework.boot:spring-boot-starter-web")
@@ -8,7 +39,19 @@ dependencies {
     implementation("com.graphql-java-kickstart:graphql-spring-boot-starter:${graphQlVersion}")
     implementation("com.graphql-java-kickstart:graphiql-spring-boot-starter:${graphQlVersion}")
     implementation("com.graphql-java-kickstart:voyager-spring-boot-starter:${graphQlVersion}")
-    implementation("com.graphql-java-kickstart:graphql-java-tools:5.6.0")
+    implementation("com.graphql-java-kickstart:graphql-java-tools:5.6.1")
+    implementation("com.graphql-java-kickstart:graphql-java-tools:5.6.1")
 
+
+    testImplementation("org.springframework.boot:spring-boot-starter-test")
     testImplementation("com.graphql-java-kickstart:graphql-spring-boot-starter-test:${graphQlVersion}")
+
+    intTestImplementation("org.springframework.boot:spring-boot-starter-test")
+    intTestImplementation("com.graphql-java-kickstart:graphql-spring-boot-starter-test:${graphQlVersion}")
+
 }
+
+test {
+    useJUnitPlatform()
+}
+

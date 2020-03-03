@@ -1,0 +1,14 @@
+#debug: true
+spring:
+  application:
+    name: GraphQL Example
+  cloud:
+    gateway:
+      routes:
+      - id: host_route
+        uri: https://example.org
+        predicates:
+        - Path=/red/{segment},/blue/{segment}
+logging:
+  level:
+    org.springframework.cloud.gateway: trace

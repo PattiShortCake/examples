@@ -1,12 +1,16 @@
 buildscript {
     ext {
-        springCloudVersion = 'Greenwich.SR1'
-        springBootVersion = '2.1.5.RELEASE'
+        springCloudVersion = 'Hoxton.SR2'
+        springBootVersion = '2.2.5.RELEASE'
+        awsSdkV2Version = '2.10.50'
     }
     repositories {
         maven {
             url "https://plugins.gradle.org/m2/"
         }
+        jcenter()
+        mavenCentral()
+        google()
     }
     dependencies {
         classpath "org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}"
@@ -18,14 +22,14 @@ group 'com.example'
 version '1.0-SNAPSHOT'
 
 
-
 subprojects {
     apply plugin: 'java-library'
-    apply plugin: 'io.spring.dependency-management'
     apply plugin: 'org.springframework.boot'
 
     repositories {
         mavenCentral()
+        jcenter()
+        google()
     }
 
     sourceCompatibility = 1.8
@@ -33,6 +37,8 @@ subprojects {
     dependencies {
         implementation platform("org.springframework.cloud:spring-cloud-dependencies:${springCloudVersion}")
         implementation platform("org.springframework.boot:spring-boot-dependencies:${springBootVersion}")
+        annotationProcessor platform("org.springframework.boot:spring-boot-dependencies:${springBootVersion}")
+        implementation platform("software.amazon.awssdk:bom:${awsSdkV2Version}")
     }
 
     bootJar {

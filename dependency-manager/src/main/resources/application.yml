@@ -1,0 +1,8 @@
+spring:
+  codec:
+    max-in-memory-size: 10MB
+  main:
+    web-application-type: none
+logging:
+  level:
+    org.springframework.boot: info

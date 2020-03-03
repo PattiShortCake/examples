@@ -1,0 +1,25 @@
+plugins {
+    id "com.liferay.xsd.builder" version "1.0.8"
+}
+
+dependencies {
+    xsdBuilder("org.apache.xmlbeans:xmlbeans:2.6.0")
+
+    implementation("org.apache.commons:commons-lang3")
+    implementation("commons-io:commons-io:2.6")
+
+    implementation("org.apache.xmlbeans:xmlbeans:2.6.0")
+
+    implementation("org.springframework.boot:spring-boot-starter")
+    implementation("org.springframework:spring-webflux")
+
+    implementation("io.projectreactor:reactor-core")
+    implementation("io.projectreactor.netty:reactor-netty")
+
+    compileOnly("org.projectlombok:lombok")
+    annotationProcessor("org.projectlombok:lombok")
+
+    testImplementation("org.springframework.boot:spring-boot-starter-test")
+}
+
+

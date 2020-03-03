@@ -1,7 +1,8 @@
 dependencies {
 //    implementation("org.springframework.boot:spring-boot-starter-security")
     implementation("org.springframework.boot:spring-boot-starter-web")
-    implementation("org.springframework.security.oauth.boot:spring-security-oauth2-autoconfigure:2.1.5.RELEASE")
+    implementation("org.springframework.security.oauth.boot:spring-security-oauth2-autoconfigure:${springBootVersion}")
     implementation("org.springframework.security:spring-security-jwt")
+    implementation("com.nimbusds:nimbus-jose-jwt:7.3")
 
 }
