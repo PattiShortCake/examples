@@ -1,0 +1,10 @@
+query{
+    profiles {
+        #  findByFirstName(firstName: "SpongeBob") {
+        sourceRecords {
+            firstName
+            #      lastName
+            color
+        }
+    }
+}

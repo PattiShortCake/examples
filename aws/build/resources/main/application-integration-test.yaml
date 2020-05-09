@@ -1,0 +1,6 @@
+graphql:
+  servlet:
+    websocket:
+      enabled: false
+graphiql:
+  enabled: false

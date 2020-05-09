@@ -1,8 +1,8 @@
 buildscript {
     ext {
-        springCloudVersion = 'Hoxton.SR2'
-        springBootVersion = '2.2.5.RELEASE'
-        awsSdkV2Version = '2.10.50'
+        springCloudVersion = 'Hoxton.SR4'
+        springBootVersion = '2.2.7.RELEASE'
+        awsSdkV2Version = '2.13.12'
     }
     repositories {
         maven {

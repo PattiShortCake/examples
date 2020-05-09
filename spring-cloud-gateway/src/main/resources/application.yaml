@@ -5,10 +5,11 @@ spring:
   cloud:
     gateway:
       routes:
-      - id: host_route
-        uri: https://example.org
-        predicates:
-        - Path=/red/{segment},/blue/{segment}
+        - id: host_route
+          uri: https://example.org
+          predicates:
+            - Path=/red/{segment},/blue/{segment}
 logging:
   level:
+    #    root: debug
     org.springframework.cloud.gateway: trace

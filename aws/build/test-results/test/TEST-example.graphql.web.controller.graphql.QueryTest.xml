@@ -1,0 +1,263 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="example.graphql.web.controller.graphql.QueryTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2019-11-07T00:33:10" hostname="MacBook-Pro.localdomain" time="0.696">
+  <properties/>
+  <testcase name="profiles()" classname="example.graphql.web.controller.graphql.QueryTest" time="0.696"/>
+  <system-out><![CDATA[19:33:08.366 [Test worker] DEBUG org.springframework.test.context.BootstrapUtils - Instantiating CacheAwareContextLoaderDelegate from class [org.springframework.test.context.cache.DefaultCacheAwareContextLoaderDelegate]
+19:33:08.385 [Test worker] DEBUG org.springframework.test.context.BootstrapUtils - Instantiating BootstrapContext using constructor [public org.springframework.test.context.support.DefaultBootstrapContext(java.lang.Class,org.springframework.test.context.CacheAwareContextLoaderDelegate)]
+19:33:08.426 [Test worker] DEBUG org.springframework.test.context.BootstrapUtils - Instantiating TestContextBootstrapper for test class [example.graphql.web.controller.graphql.QueryTest] from class [org.springframework.boot.test.context.SpringBootTestContextBootstrapper]
+19:33:08.443 [Test worker] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper - Neither @ContextConfiguration nor @ContextHierarchy found for test class [example.graphql.web.controller.graphql.QueryTest], using SpringBootContextLoader
+19:33:08.446 [Test worker] DEBUG org.springframework.test.context.support.AbstractContextLoader - Did not detect default resource location for test class [example.graphql.web.controller.graphql.QueryTest]: class path resource [example/graphql/web/controller/graphql/QueryTest-context.xml] does not exist
+19:33:08.447 [Test worker] DEBUG org.springframework.test.context.support.AbstractContextLoader - Did not detect default resource location for test class [example.graphql.web.controller.graphql.QueryTest]: class path resource [example/graphql/web/controller/graphql/QueryTestContext.groovy] does not exist
+19:33:08.447 [Test worker] INFO org.springframework.test.context.support.AbstractContextLoader - Could not detect default resource locations for test class [example.graphql.web.controller.graphql.QueryTest]: no resource found for suffixes {-context.xml, Context.groovy}.
+19:33:08.583 [Test worker] DEBUG org.springframework.boot.test.context.SpringBootTestContextBootstrapper - @TestExecutionListeners is not present for class [example.graphql.web.controller.graphql.QueryTest]: using defaults.
+19:33:08.583 [Test worker] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper - Loaded default TestExecutionListener class names from location [META-INF/spring.factories]: [org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener, org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener, org.springframework.test.context.web.ServletTestExecutionListener, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener, org.springframework.test.context.support.DependencyInjectionTestExecutionListener, org.springframework.test.context.support.DirtiesContextTestExecutionListener, org.springframework.test.context.transaction.TransactionalTestExecutionListener, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener, org.springframework.test.context.event.EventPublishingTestExecutionListener]
+19:33:08.592 [Test worker] DEBUG org.springframework.boot.test.context.SpringBootTestContextBootstrapper - Skipping candidate TestExecutionListener [org.springframework.test.context.transaction.TransactionalTestExecutionListener] due to a missing dependency. Specify custom listener classes or make the default listener classes and their required dependencies available. Offending class: [org/springframework/transaction/interceptor/TransactionAttributeSource]
+19:33:08.593 [Test worker] DEBUG org.springframework.boot.test.context.SpringBootTestContextBootstrapper - Skipping candidate TestExecutionListener [org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener] due to a missing dependency. Specify custom listener classes or make the default listener classes and their required dependencies available. Offending class: [org/springframework/transaction/interceptor/TransactionAttribute]
+19:33:08.593 [Test worker] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper - Using TestExecutionListeners: [org.springframework.test.context.web.ServletTestExecutionListener@204102c3, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener@58cf293f, org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener@4f118679, org.springframework.boot.test.autoconfigure.SpringBootDependencyInjectionTestExecutionListener@2df65b38, org.springframework.test.context.support.DirtiesContextTestExecutionListener@589135f, org.springframework.test.context.event.EventPublishingTestExecutionListener@24ae4400, org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener@67cf3ca2, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener@787f94f8, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener@35216343, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener@6379afa3, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener@7dcdb542]
+19:33:08.596 [Test worker] DEBUG org.springframework.test.context.support.AbstractDirtiesContextTestExecutionListener - Before test class: context [DefaultTestContext@78c8f95c testClass = QueryTest, testInstance = [null], testMethod = [null], testException = [null], mergedContextConfiguration = [WebMergedContextConfiguration@1a9218fb testClass = QueryTest, locations = '{}', classes = '{class com.oembedler.moon.graphql.boot.GraphQLInstrumentationAutoConfiguration, class org.springframework.boot.autoconfigure.web.servlet.ServletWebServerFactoryAutoConfiguration, class com.oembedler.moon.graphql.boot.GraphQLJavaToolsAutoConfiguration, class com.oembedler.moon.graphql.boot.GraphQLWebAutoConfiguration, class com.graphql.spring.boot.test.GraphQLTestAutoConfiguration, class org.springframework.context.support.PropertySourcesPlaceholderConfigurer, class org.springframework.boot.autoconfigure.websocket.servlet.WebSocketServletAutoConfiguration, class org.springframework.boot.actuate.autoconfigure.metrics.MetricsAutoConfiguration, class org.springframework.boot.actuate.autoconfigure.metrics.export.simple.SimpleMetricsExportAutoConfiguration, class org.springframework.boot.autoconfigure.jackson.JacksonAutoConfiguration, class com.oembedler.moon.graphql.boot.GraphQLInstrumentationAutoConfiguration, class org.springframework.boot.autoconfigure.web.servlet.ServletWebServerFactoryAutoConfiguration, class com.oembedler.moon.graphql.boot.GraphQLJavaToolsAutoConfiguration, class com.oembedler.moon.graphql.boot.GraphQLWebAutoConfiguration, class com.graphql.spring.boot.test.GraphQLTestAutoConfiguration, class org.springframework.context.support.PropertySourcesPlaceholderConfigurer, class org.springframework.boot.autoconfigure.websocket.servlet.WebSocketServletAutoConfiguration, class org.springframework.boot.actuate.autoconfigure.metrics.MetricsAutoConfiguration, class org.springframework.boot.actuate.autoconfigure.metrics.export.simple.SimpleMetricsExportAutoConfiguration, class org.springframework.boot.autoconfigure.jackson.JacksonAutoConfiguration}', contextInitializerClasses = '[]', activeProfiles = '{integration-test}', propertySourceLocations = '{}', propertySourceProperties = '{org.springframework.boot.test.context.SpringBootTestContextBootstrapper=true, server.port=0}', contextCustomizers = set[org.springframework.boot.test.autoconfigure.OverrideAutoConfigurationContextCustomizerFactory$DisableAutoConfigurationContextCustomizer@2451015e, org.springframework.boot.test.autoconfigure.properties.PropertyMappingContextCustomizer@0, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverContextCustomizerFactory$Customizer@4367fdad, [ImportsContextCustomizer@67f38908 key = []], org.springframework.boot.test.context.filter.ExcludeFilterContextCustomizer@5e63d6df, org.springframework.boot.test.json.DuplicateJsonObjectContextCustomizerFactory$DuplicateJsonObjectContextCustomizer@2c365a93, org.springframework.boot.test.mock.mockito.MockitoContextCustomizer@0, org.springframework.boot.test.web.client.TestRestTemplateContextCustomizer@4d9338f0], resourceBasePath = 'src/main/webapp', contextLoader = 'org.springframework.boot.test.context.SpringBootContextLoader', parent = [null]], attributes = map['org.springframework.test.context.web.ServletTestExecutionListener.activateListener' -> false]], class annotated with @DirtiesContext [false] with mode [null].
+19:33:08.605 [Test worker] DEBUG org.springframework.test.context.support.DependencyInjectionTestExecutionListener - Performing dependency injection for test context [[DefaultTestContext@78c8f95c testClass = QueryTest, testInstance = example.graphql.web.controller.graphql.QueryTest@40a098c0, testMethod = [null], testException = [null], mergedContextConfiguration = [WebMergedContextConfiguration@1a9218fb testClass = QueryTest, locations = '{}', classes = '{class com.oembedler.moon.graphql.boot.GraphQLInstrumentationAutoConfiguration, class org.springframework.boot.autoconfigure.web.servlet.ServletWebServerFactoryAutoConfiguration, class com.oembedler.moon.graphql.boot.GraphQLJavaToolsAutoConfiguration, class com.oembedler.moon.graphql.boot.GraphQLWebAutoConfiguration, class com.graphql.spring.boot.test.GraphQLTestAutoConfiguration, class org.springframework.context.support.PropertySourcesPlaceholderConfigurer, class org.springframework.boot.autoconfigure.websocket.servlet.WebSocketServletAutoConfiguration, class org.springframework.boot.actuate.autoconfigure.metrics.MetricsAutoConfiguration, class org.springframework.boot.actuate.autoconfigure.metrics.export.simple.SimpleMetricsExportAutoConfiguration, class org.springframework.boot.autoconfigure.jackson.JacksonAutoConfiguration, class com.oembedler.moon.graphql.boot.GraphQLInstrumentationAutoConfiguration, class org.springframework.boot.autoconfigure.web.servlet.ServletWebServerFactoryAutoConfiguration, class com.oembedler.moon.graphql.boot.GraphQLJavaToolsAutoConfiguration, class com.oembedler.moon.graphql.boot.GraphQLWebAutoConfiguration, class com.graphql.spring.boot.test.GraphQLTestAutoConfiguration, class org.springframework.context.support.PropertySourcesPlaceholderConfigurer, class org.springframework.boot.autoconfigure.websocket.servlet.WebSocketServletAutoConfiguration, class org.springframework.boot.actuate.autoconfigure.metrics.MetricsAutoConfiguration, class org.springframework.boot.actuate.autoconfigure.metrics.export.simple.SimpleMetricsExportAutoConfiguration, class org.springframework.boot.autoconfigure.jackson.JacksonAutoConfiguration}', contextInitializerClasses = '[]', activeProfiles = '{integration-test}', propertySourceLocations = '{}', propertySourceProperties = '{org.springframework.boot.test.context.SpringBootTestContextBootstrapper=true, server.port=0}', contextCustomizers = set[org.springframework.boot.test.autoconfigure.OverrideAutoConfigurationContextCustomizerFactory$DisableAutoConfigurationContextCustomizer@2451015e, org.springframework.boot.test.autoconfigure.properties.PropertyMappingContextCustomizer@0, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverContextCustomizerFactory$Customizer@4367fdad, [ImportsContextCustomizer@67f38908 key = []], org.springframework.boot.test.context.filter.ExcludeFilterContextCustomizer@5e63d6df, org.springframework.boot.test.json.DuplicateJsonObjectContextCustomizerFactory$DuplicateJsonObjectContextCustomizer@2c365a93, org.springframework.boot.test.mock.mockito.MockitoContextCustomizer@0, org.springframework.boot.test.web.client.TestRestTemplateContextCustomizer@4d9338f0], resourceBasePath = 'src/main/webapp', contextLoader = 'org.springframework.boot.test.context.SpringBootContextLoader', parent = [null]], attributes = map['org.springframework.test.context.web.ServletTestExecutionListener.activateListener' -> false]]].
+19:33:08.633 [Test worker] DEBUG org.springframework.test.context.support.TestPropertySourceUtils - Adding inlined properties to environment: {spring.jmx.enabled=false, org.springframework.boot.test.context.SpringBootTestContextBootstrapper=true, server.port=0}
+2019-11-06 19:33:08.853 DEBUG 1026 --- [    Test worker] .c.l.ClasspathLoggingApplicationListener : Application started with classpath: unknown
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+ :: Spring Boot ::        (v2.2.0.RELEASE)
+
+2019-11-06 19:33:08.977  INFO 1026 --- [    Test worker] e.g.web.controller.graphql.QueryTest     : Starting QueryTest on MacBook-Pro.localdomain with PID 1026 (started by patrick in /Users/patrick/Documents/example/graphql)
+2019-11-06 19:33:08.977  INFO 1026 --- [    Test worker] e.g.web.controller.graphql.QueryTest     : The following profiles are active: integration-test
+2019-11-06 19:33:08.978 DEBUG 1026 --- [    Test worker] o.s.boot.SpringApplication               : Loading source class com.oembedler.moon.graphql.boot.GraphQLInstrumentationAutoConfiguration,class org.springframework.boot.autoconfigure.web.servlet.ServletWebServerFactoryAutoConfiguration,class com.oembedler.moon.graphql.boot.GraphQLJavaToolsAutoConfiguration,class com.oembedler.moon.graphql.boot.GraphQLWebAutoConfiguration,class com.graphql.spring.boot.test.GraphQLTestAutoConfiguration,class org.springframework.context.support.PropertySourcesPlaceholderConfigurer,class org.springframework.boot.autoconfigure.websocket.servlet.WebSocketServletAutoConfiguration,class org.springframework.boot.actuate.autoconfigure.metrics.MetricsAutoConfiguration,class org.springframework.boot.actuate.autoconfigure.metrics.export.simple.SimpleMetricsExportAutoConfiguration,class org.springframework.boot.autoconfigure.jackson.JacksonAutoConfiguration
+2019-11-06 19:33:09.042 DEBUG 1026 --- [    Test worker] o.s.b.c.c.ConfigFileApplicationListener  : Activated activeProfiles integration-test
+2019-11-06 19:33:09.043 DEBUG 1026 --- [    Test worker] o.s.b.c.c.ConfigFileApplicationListener  : Loaded config file 'file:/Users/patrick/Documents/example/graphql/build/resources/main/application.yaml' (classpath:/application.yaml)
+2019-11-06 19:33:09.043 DEBUG 1026 --- [    Test worker] o.s.b.c.c.ConfigFileApplicationListener  : Loaded config file 'file:/Users/patrick/Documents/example/graphql/build/resources/main/application-integration-test.yaml' (classpath:/application-integration-test.yaml) for profile integration-test
+2019-11-06 19:33:09.044 DEBUG 1026 --- [    Test worker] ConfigServletWebServerApplicationContext : Refreshing org.springframework.boot.web.servlet.context.AnnotationConfigServletWebServerApplicationContext@1dfa9c69
+2019-11-06 19:33:09.714 DEBUG 1026 --- [    Test worker] .s.b.w.e.t.TomcatServletWebServerFactory : Code archive: /Users/patrick/.gradle/caches/modules-2/files-2.1/org.springframework.boot/spring-boot/2.2.0.RELEASE/1fab3cd45761bf4ee500cfa3bbb2812648014ad0/spring-boot-2.2.0.RELEASE.jar
+2019-11-06 19:33:09.715 DEBUG 1026 --- [    Test worker] .s.b.w.e.t.TomcatServletWebServerFactory : Code archive: /Users/patrick/.gradle/caches/modules-2/files-2.1/org.springframework.boot/spring-boot/2.2.0.RELEASE/1fab3cd45761bf4ee500cfa3bbb2812648014ad0/spring-boot-2.2.0.RELEASE.jar
+2019-11-06 19:33:09.715 DEBUG 1026 --- [    Test worker] .s.b.w.e.t.TomcatServletWebServerFactory : None of the document roots [src/main/webapp, public, static] point to a directory and will be ignored.
+2019-11-06 19:33:09.740  INFO 1026 --- [    Test worker] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 0 (http)
+2019-11-06 19:33:09.750  INFO 1026 --- [    Test worker] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2019-11-06 19:33:09.751  INFO 1026 --- [    Test worker] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.27]
+2019-11-06 19:33:09.867  INFO 1026 --- [    Test worker] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2019-11-06 19:33:09.867 DEBUG 1026 --- [    Test worker] o.s.web.context.ContextLoader            : Published root WebApplicationContext as ServletContext attribute with name [org.springframework.web.context.WebApplicationContext.ROOT]
+2019-11-06 19:33:09.867  INFO 1026 --- [    Test worker] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 823 ms
+2019-11-06 19:33:10.758  INFO 1026 --- [    Test worker] c.o.m.g.b.GraphQLWebAutoConfiguration    : Building GraphQLObjectMapper including errorHandler: null
+2019-11-06 19:33:10.796 DEBUG 1026 --- [    Test worker] o.s.b.w.s.ServletContextInitializerBeans : Mapping filters: corsConfigurer urls=[/*] order=2147483647
+2019-11-06 19:33:10.797 DEBUG 1026 --- [    Test worker] o.s.b.w.s.ServletContextInitializerBeans : Mapping servlets: configuredGraphQLHttpServlet urls=[/graphql/*]
+2019-11-06 19:33:10.813 DEBUG 1026 --- [    Test worker] o.springframework.web.filter.CorsFilter  : Filter 'corsConfigurer' configured for use
+2019-11-06 19:33:10.920 DEBUG 1026 --- [    Test worker] ConditionEvaluationReportLoggingListener : 
+
+
+============================
+CONDITIONS EVALUATION REPORT
+============================
+
+
+Positive matches:
+-----------------
+
+   GraphQLInstrumentationAutoConfiguration matched:
+      - @ConditionalOnProperty (graphql.servlet.enabled=true) matched (OnPropertyCondition)
+
+   GraphQLInstrumentationAutoConfiguration#tracingNoResolversInstrumentation matched:
+      - @ConditionalOnExpression (#{${graphql.servlet.actuator-metrics:false}&& ${graphql.servlet.tracing-enabled:'false'}.toString().equals('false')}) resulted in true (OnExpressionCondition)
+      - @ConditionalOnBean (types: com.oembedler.moon.graphql.boot.metrics.TracingNoResolversInstrumentation; SearchStrategy: all) did not find any beans (OnBeanCondition)
+
+   GraphQLJavaToolsAutoConfiguration matched:
+      - @ConditionalOnClass found required class 'com.coxautodev.graphql.tools.SchemaParser' (OnClassCondition)
+
+   GraphQLJavaToolsAutoConfiguration#graphQLSchema matched:
+      - @ConditionalOnBean (types: com.coxautodev.graphql.tools.SchemaParser; SearchStrategy: all) found bean 'schemaParser'; @ConditionalOnBean (types: graphql.schema.GraphQLSchema,graphql.servlet.config.GraphQLSchemaProvider; SearchStrategy: all) did not find any beans (OnBeanCondition)
+
+   GraphQLJavaToolsAutoConfiguration#perFieldObjectMapperProvider matched:
+      - @ConditionalOnProperty (graphql.tools.use-default-objectmapper=true) matched (OnPropertyCondition)
+      - @ConditionalOnBean (types: com.coxautodev.graphql.tools.PerFieldObjectMapperProvider; SearchStrategy: all) did not find any beans (OnBeanCondition)
+
+   GraphQLJavaToolsAutoConfiguration#schemaParser matched:
+      - @ConditionalOnBean (types: com.coxautodev.graphql.tools.GraphQLResolver; SearchStrategy: all) found bean 'query'; @ConditionalOnBean (types: com.coxautodev.graphql.tools.SchemaParser; SearchStrategy: all) did not find any beans (OnBeanCondition)
+
+   GraphQLJavaToolsAutoConfiguration#schemaStringProvider matched:
+      - @ConditionalOnBean (types: com.oembedler.moon.graphql.boot.SchemaStringProvider; SearchStrategy: all) did not find any beans (OnBeanCondition)
+
+   GraphQLTestAutoConfiguration matched:
+      - @ConditionalOnWebApplication (required) found WebApplicationContext (OnWebApplicationCondition)
+      - @ConditionalOnProperty (graphql.servlet.enabled=true) matched (OnPropertyCondition)
+      - @ConditionalOnWebApplication (required) found 'session' scope (OnWebApplicationCondition)
+
+   GraphQLTestAutoConfiguration#graphQLTestUtils matched:
+      - @ConditionalOnBean (types: com.graphql.spring.boot.test.GraphQLTestTemplate; SearchStrategy: all) did not find any beans (OnBeanCondition)
+
+   GraphQLWebAutoConfiguration matched:
+      - @ConditionalOnClass found required class 'org.springframework.web.servlet.DispatcherServlet' (OnClassCondition)
+      - @ConditionalOnWebApplication (required) found WebApplicationContext (OnWebApplicationCondition)
+      - @ConditionalOnProperty (graphql.servlet.enabled=true) matched (OnPropertyCondition)
+      - @ConditionalOnWebApplication (required) found 'session' scope (OnWebApplicationCondition)
+      - AnyNestedCondition 1 matched 1 did not; NestedCondition on OnSchemaOrSchemaProviderBean.OnSchemaProvider @ConditionalOnBean (types: graphql.servlet.config.GraphQLSchemaProvider; SearchStrategy: all) did not find any beans of type graphql.servlet.config.GraphQLSchemaProvider; NestedCondition on OnSchemaOrSchemaProviderBean.OnSchema @ConditionalOnBean (types: graphql.schema.GraphQLSchema; SearchStrategy: all) found bean 'graphQLSchema' (OnSchemaOrSchemaProviderBean)
+
+   GraphQLWebAutoConfiguration#corsConfigurer matched:
+      - @ConditionalOnClass found required class 'org.springframework.web.filter.CorsFilter' (OnClassCondition)
+      - @ConditionalOnProperty (graphql.servlet.corsEnabled=true) matched (OnPropertyCondition)
+
+   GraphQLWebAutoConfiguration#executionStrategyProvider matched:
+      - @ConditionalOnBean (types: graphql.servlet.config.ExecutionStrategyProvider; SearchStrategy: all) did not find any beans (OnBeanCondition)
+
+   GraphQLWebAutoConfiguration#graphQLHttpServlet matched:
+      - @ConditionalOnBean (types: graphql.servlet.GraphQLHttpServlet; SearchStrategy: all) did not find any beans (OnBeanCondition)
+
+   GraphQLWebAutoConfiguration#graphQLObjectMapper matched:
+      - @ConditionalOnBean (types: graphql.servlet.core.GraphQLObjectMapper; SearchStrategy: all) did not find any beans (OnBeanCondition)
+
+   GraphQLWebAutoConfiguration#graphQLSchemaProvider matched:
+      - @ConditionalOnBean (types: graphql.servlet.config.GraphQLSchemaProvider; SearchStrategy: all) did not find any beans (OnBeanCondition)
+
+   GraphQLWebAutoConfiguration#graphQLServletConfiguration matched:
+      - @ConditionalOnBean (types: graphql.servlet.config.GraphQLConfiguration; SearchStrategy: all) did not find any beans (OnBeanCondition)
+
+   GraphQLWebAutoConfiguration#invocationInputFactory matched:
+      - @ConditionalOnBean (types: graphql.servlet.input.GraphQLInvocationInputFactory; SearchStrategy: all) did not find any beans (OnBeanCondition)
+
+   GraphQLWebAutoConfiguration#objectMapperProvider matched:
+      - @ConditionalOnProperty (graphql.servlet.use-default-objectmapper=true) matched (OnPropertyCondition)
+      - @ConditionalOnBean (types: graphql.servlet.config.ObjectMapperProvider; SearchStrategy: all) did not find any beans (OnBeanCondition)
+
+   GraphQLWebAutoConfiguration#queryInvoker matched:
+      - @ConditionalOnBean (types: graphql.servlet.core.GraphQLQueryInvoker; SearchStrategy: all) did not find any beans (OnBeanCondition)
+
+   JacksonAutoConfiguration matched:
+      - @ConditionalOnClass found required class 'com.fasterxml.jackson.databind.ObjectMapper' (OnClassCondition)
+
+   JacksonAutoConfiguration.Jackson2ObjectMapperBuilderCustomizerConfiguration matched:
+      - @ConditionalOnClass found required class 'org.springframework.http.converter.json.Jackson2ObjectMapperBuilder' (OnClassCondition)
+
+   JacksonAutoConfiguration.JacksonObjectMapperBuilderConfiguration matched:
+      - @ConditionalOnClass found required class 'org.springframework.http.converter.json.Jackson2ObjectMapperBuilder' (OnClassCondition)
+
+   JacksonAutoConfiguration.JacksonObjectMapperBuilderConfiguration#jacksonObjectMapperBuilder matched:
+      - @ConditionalOnBean (types: org.springframework.http.converter.json.Jackson2ObjectMapperBuilder; SearchStrategy: all) did not find any beans (OnBeanCondition)
+
+   JacksonAutoConfiguration.JacksonObjectMapperConfiguration matched:
+      - @ConditionalOnClass found required class 'org.springframework.http.converter.json.Jackson2ObjectMapperBuilder' (OnClassCondition)
+
+   JacksonAutoConfiguration.JacksonObjectMapperConfiguration#jacksonObjectMapper matched:
+      - @ConditionalOnBean (types: com.fasterxml.jackson.databind.ObjectMapper; SearchStrategy: all) did not find any beans (OnBeanCondition)
+
+   JacksonAutoConfiguration.ParameterNamesModuleConfiguration matched:
+      - @ConditionalOnClass found required class 'com.fasterxml.jackson.module.paramnames.ParameterNamesModule' (OnClassCondition)
+
+   JacksonAutoConfiguration.ParameterNamesModuleConfiguration#parameterNamesModule matched:
+      - @ConditionalOnBean (types: com.fasterxml.jackson.module.paramnames.ParameterNamesModule; SearchStrategy: all) did not find any beans (OnBeanCondition)
+
+   MetricsAutoConfiguration matched:
+      - @ConditionalOnClass found required class 'io.micrometer.core.annotation.Timed' (OnClassCondition)
+
+   MetricsAutoConfiguration#micrometerClock matched:
+      - @ConditionalOnBean (types: io.micrometer.core.instrument.Clock; SearchStrategy: all) did not find any beans (OnBeanCondition)
+
+   ServletWebServerFactoryAutoConfiguration matched:
+      - @ConditionalOnClass found required class 'javax.servlet.ServletRequest' (OnClassCondition)
+      - found WebApplicationContext (OnWebApplicationCondition)
+      - found 'session' scope (OnWebApplicationCondition)
+
+   ServletWebServerFactoryAutoConfiguration#tomcatServletWebServerFactoryCustomizer matched:
+      - @ConditionalOnClass found required class 'org.apache.catalina.startup.Tomcat' (OnClassCondition)
+
+   ServletWebServerFactoryConfiguration.EmbeddedTomcat matched:
+      - @ConditionalOnClass found required classes 'javax.servlet.Servlet', 'org.apache.catalina.startup.Tomcat', 'org.apache.coyote.UpgradeProtocol' (OnClassCondition)
+      - @ConditionalOnBean (types: org.springframework.boot.web.servlet.server.ServletWebServerFactory; SearchStrategy: current) did not find any beans (OnBeanCondition)
+
+   SimpleMetricsExportAutoConfiguration matched:
+      - @ConditionalOnProperty (management.metrics.export.simple.enabled=true) matched (OnPropertyCondition)
+      - @ConditionalOnBean (types: io.micrometer.core.instrument.Clock; SearchStrategy: all) found bean 'micrometerClock'; @ConditionalOnBean (types: io.micrometer.core.instrument.MeterRegistry; SearchStrategy: all) did not find any beans (OnBeanCondition)
+
+   SimpleMetricsExportAutoConfiguration#simpleConfig matched:
+      - @ConditionalOnBean (types: io.micrometer.core.instrument.simple.SimpleConfig; SearchStrategy: all) did not find any beans (OnBeanCondition)
+
+   WebSocketServletAutoConfiguration matched:
+      - @ConditionalOnClass found required classes 'javax.servlet.Servlet', 'javax.websocket.server.ServerContainer' (OnClassCondition)
+      - found WebApplicationContext (OnWebApplicationCondition)
+      - found 'session' scope (OnWebApplicationCondition)
+
+   WebSocketServletAutoConfiguration.TomcatWebSocketConfiguration matched:
+      - @ConditionalOnClass found required classes 'org.apache.catalina.startup.Tomcat', 'org.apache.tomcat.websocket.server.WsSci' (OnClassCondition)
+
+   WebSocketServletAutoConfiguration.TomcatWebSocketConfiguration#websocketServletWebServerCustomizer matched:
+      - @ConditionalOnBean (names: websocketServletWebServerCustomizer; ; SearchStrategy: all) did not find any beans (OnBeanCondition)
+
+
+Negative matches:
+-----------------
+
+   GraphQLInstrumentationAutoConfiguration#maxQueryComplexityInstrumentation:
+      Did not match:
+         - @ConditionalOnProperty (graphql.servlet.max-query-complexity) did not find property 'graphql.servlet.max-query-complexity' (OnPropertyCondition)
+
+   GraphQLInstrumentationAutoConfiguration#maxQueryDepthInstrumentation:
+      Did not match:
+         - @ConditionalOnProperty (graphql.servlet.max-query-depth) did not find property 'graphql.servlet.max-query-depth' (OnPropertyCondition)
+
+   GraphQLInstrumentationAutoConfiguration#metricsInstrumentation:
+      Did not match:
+         - @ConditionalOnBean (types: io.micrometer.core.instrument.MeterRegistry,graphql.execution.instrumentation.tracing.TracingInstrumentation; SearchStrategy: all) did not find any beans of type io.micrometer.core.instrument.MeterRegistry (OnBeanCondition)
+      Matched:
+         - @ConditionalOnProperty (graphql.servlet.actuator-metrics=true) matched (OnPropertyCondition)
+
+   GraphQLInstrumentationAutoConfiguration#tracingInstrumentation:
+      Did not match:
+         - @ConditionalOnExpression (#{${graphql.servlet.tracing-enabled:'false'}.equals('metrics-only')|| ${graphql.servlet.tracing-enabled:'false'}.equals(true)}) resulted in false (OnExpressionCondition)
+
+   GraphQLInstrumentationAutoConfiguration#websocketMetrics:
+      Did not match:
+         - @ConditionalOnBean (types: io.micrometer.core.instrument.MeterRegistry,graphql.servlet.GraphQLWebsocketServlet; SearchStrategy: all) did not find any beans of type io.micrometer.core.instrument.MeterRegistry, graphql.servlet.GraphQLWebsocketServlet (OnBeanCondition)
+      Matched:
+         - @ConditionalOnProperty (graphql.servlet.actuator-metrics=true) matched (OnPropertyCondition)
+
+   JacksonAutoConfiguration.JodaDateTimeJacksonConfiguration:
+      Did not match:
+         - @ConditionalOnClass did not find required classes 'org.joda.time.DateTime', 'com.fasterxml.jackson.datatype.joda.ser.DateTimeSerializer', 'com.fasterxml.jackson.datatype.joda.cfg.JacksonJodaDateFormat' (OnClassCondition)
+
+   ServletWebServerFactoryAutoConfiguration#forwardedHeaderFilter:
+      Did not match:
+         - @ConditionalOnProperty (server.forward-headers-strategy=framework) did not find property 'server.forward-headers-strategy' (OnPropertyCondition)
+
+   ServletWebServerFactoryConfiguration.EmbeddedJetty:
+      Did not match:
+         - @ConditionalOnClass did not find required classes 'org.eclipse.jetty.server.Server', 'org.eclipse.jetty.util.Loader', 'org.eclipse.jetty.webapp.WebAppContext' (OnClassCondition)
+
+   ServletWebServerFactoryConfiguration.EmbeddedUndertow:
+      Did not match:
+         - @ConditionalOnClass did not find required classes 'io.undertow.Undertow', 'org.xnio.SslClientAuthMode' (OnClassCondition)
+
+   WebSocketServletAutoConfiguration.JettyWebSocketConfiguration:
+      Did not match:
+         - @ConditionalOnClass did not find required class 'org.eclipse.jetty.websocket.jsr356.server.deploy.WebSocketServerContainerInitializer' (OnClassCondition)
+
+   WebSocketServletAutoConfiguration.UndertowWebSocketConfiguration:
+      Did not match:
+         - @ConditionalOnClass did not find required class 'io.undertow.websockets.jsr.Bootstrap' (OnClassCondition)
+
+
+Exclusions:
+-----------
+
+    None
+
+
+Unconditional classes:
+----------------------
+
+    None
+
+
+
+2019-11-06 19:33:10.967  INFO 1026 --- [    Test worker] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 50413 (http) with context path ''
+2019-11-06 19:33:10.973  INFO 1026 --- [    Test worker] e.g.web.controller.graphql.QueryTest     : Started QueryTest in 2.335 seconds (JVM running for 3.431)
+2019-11-06 19:33:11.324 DEBUG 1026 --- [    Test worker] o.s.web.client.RestTemplate              : HTTP POST http://localhost:50413/graphql
+2019-11-06 19:33:11.328 DEBUG 1026 --- [    Test worker] o.s.web.client.RestTemplate              : Accept=[text/plain, application/json, application/*+json, */*]
+2019-11-06 19:33:11.332 DEBUG 1026 --- [    Test worker] o.s.web.client.RestTemplate              : Writing [{"query":"query{\n    profiles {\n        #  findByFirstName(firstName: \"SpongeBob\") {\n        sourceRecords {\n            firstName\n            #      lastName\n            color\n        }\n    }\n}\n","variables":null}] as "application/json;charset=UTF-8"
+2019-11-06 19:33:11.612 DEBUG 1026 --- [    Test worker] o.s.web.client.RestTemplate              : Response 200 OK
+2019-11-06 19:33:11.614 DEBUG 1026 --- [    Test worker] o.s.web.client.RestTemplate              : Reading to [java.lang.String] as "application/json;charset=UTF-8"
+]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

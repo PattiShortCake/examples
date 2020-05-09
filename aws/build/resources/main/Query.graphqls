@@ -1,0 +1,5 @@
+type Query {
+  profiles: [Profile!]
+  findByFirstName(firstName: String): [Profile]
+  findByLastName(lastName: String): [Profile]
+}
