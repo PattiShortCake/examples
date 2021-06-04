@@ -25,6 +25,7 @@ version '1.0-SNAPSHOT'
 subprojects {
     apply plugin: 'java-library'
     apply plugin: 'org.springframework.boot'
+    apply plugin: 'eclipse'
 
     repositories {
         mavenCentral()
