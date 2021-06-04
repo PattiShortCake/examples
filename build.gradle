@@ -26,10 +26,9 @@ subprojects {
     apply plugin: 'java-library'
     apply plugin: 'org.springframework.boot'
     apply plugin: 'eclipse'
-
+    
     repositories {
         mavenCentral()
-        jcenter()
         google()
     }
 
