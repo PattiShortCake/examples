@@ -4,7 +4,12 @@ rootProject.name = 'example'
 //include 'dependency-manager'
 //include 'graphql'
 //include 'graphql-client'
+
+include 'multi-project:api'
+include 'multi-project:core'
+include 'multi-project:project'
+
 //include 'oauth2-resource-server'
 //include 'oauth2-server'
-include 'spring-cloud-gateway'
+// include 'spring-cloud-gateway'
 //include 'webflux'
