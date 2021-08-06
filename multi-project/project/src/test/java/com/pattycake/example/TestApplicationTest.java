@@ -13,7 +13,5 @@ public class TestApplicationTest {
   @Test
   public void testRun() throws Exception {
     sut.run();
-
-    throw new Exception();
   }
 }
