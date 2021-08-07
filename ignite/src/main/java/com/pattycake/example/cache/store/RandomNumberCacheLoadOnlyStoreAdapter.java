@@ -1,16 +1,18 @@
 package com.pattycake.example.cache.store;
 
+import com.pattycake.example.config.ApacheIgniteConfiguration;
 import com.pattycake.example.model.InputModel;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.ignite.Ignite;
 import org.apache.ignite.cache.store.CacheLoadOnlyStoreAdapter;
 import org.apache.ignite.cache.store.CacheStoreSession;
 import org.apache.ignite.lang.IgniteBiTuple;
 import org.apache.ignite.resources.CacheStoreSessionResource;
+import org.apache.ignite.resources.IgniteInstanceResource;
 import org.jetbrains.annotations.Nullable;
 
 import javax.cache.integration.CacheLoaderException;
-import java.util.Iterator;
-import java.util.List;
+import java.util.*;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
@@ -25,18 +27,23 @@ public class RandomNumberCacheLoadOnlyStoreAdapter extends CacheLoadOnlyStoreAda
     @CacheStoreSessionResource
     private CacheStoreSession ses;
 
+    @IgniteInstanceResource
+    private Ignite ignite;
+
     @Override
     protected Iterator<InputModel> inputIterator(@Nullable Object... args) throws CacheLoaderException {
         log.info("Getting InputModel Iterator");
 
-        if (args.length == 1 && args[0] instanceof Integer) {
-            int divisor = (int) args[0];
+        if (args[0] instanceof int[]) {
+            Set<Integer> partitions = IntStream.of((int[]) args[0]).mapToObj(Integer::valueOf).collect(Collectors.toSet());
+
             return generateInput().stream()
-                    .filter(model -> model.getValue() % divisor == 0)
+                    .filter(model -> partitions.contains(model.getValue() % ApacheIgniteConfiguration.CACHE_PARTITIONS))
                     .collect(Collectors.toList())
                     .iterator();
         }
-        return generateInput().iterator();
+
+        return Collections.emptyIterator();
     }
 
     @Override
@@ -46,11 +53,13 @@ public class RandomNumberCacheLoadOnlyStoreAdapter extends CacheLoadOnlyStoreAda
     }
 
     private List<InputModel> generateInput() {
-        return IntStream.range(1, 10).mapToObj( i -> InputModel.builder()
+        return IntStream.range(1, 50).mapToObj( i -> InputModel.builder()
         .key(Integer.toString(i))
                 .value(i)
                 .build()
         )
                 .collect(Collectors.toList());
     }
+
+
 }

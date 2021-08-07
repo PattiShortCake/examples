@@ -8,7 +8,7 @@ import lombok.extern.slf4j.Slf4j;
 
 @SpringBootApplication
 @Slf4j
-public class IgniteApplication implements CommandLineRunner {
+public class IgniteApplication {
 
     private IgniteService service;
 
@@ -18,11 +18,6 @@ public class IgniteApplication implements CommandLineRunner {
 
     public static void main(String[] args) {
         SpringApplication.run(IgniteApplication.class, args);
-    }
-
-    @Override
-    public void run(String... args) throws Exception {
-        service.printEven();
     }
 
 }
