@@ -8,9 +8,9 @@ import lombok.extern.slf4j.Slf4j;
 
 @SpringBootApplication
 @Slf4j
-public class IgniteApplication implements CommandLineRunner{
+public class IgniteApplication implements CommandLineRunner {
 
-private IgniteService service;
+    private IgniteService service;
 
     public IgniteApplication(IgniteService service) {
         this.service = service;

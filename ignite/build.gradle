@@ -6,11 +6,18 @@ dependencies {
     compileOnly 'org.projectlombok:lombok'
 	annotationProcessor 'org.projectlombok:lombok'
 
+    implementation 'de.codecentric:spring-boot-admin-starter-client:2.4.3'
+
     implementation 'org.apache.ignite:ignite-core:2.10.0'
+//    implementation 'org.apache.ignite:ignite-indexing:2.10.0'
     implementation 'org.apache.ignite:ignite-slf4j:2.10.0'
     implementation 'org.apache.ignite:ignite-spring-boot-autoconfigure-ext:1.0.0'
 
+    implementation "org.springframework.boot:spring-boot-starter-actuator"
+    implementation "org.springframework.boot:spring-boot-starter-security"
     implementation "org.springframework.boot:spring-boot-starter-web"
+
+//    implementation "org.gridgain:control-center-agent:2.10.0.0"
 
 	testImplementation "org.springframework.boot:spring-boot-starter-test"
 }

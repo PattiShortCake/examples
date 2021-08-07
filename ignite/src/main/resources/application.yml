@@ -1,0 +1,16 @@
+spring:
+  application:
+    name: ignite-example
+  boot:
+    admin:
+      client:
+        url: http://127.0.0.1:8081
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+logging:
+  level:
+    de.codecentric.boot.admin: debug
+    org.springframework.boot.autoconfigure.logging.ConditionEvaluationReportLoggingListener: debug

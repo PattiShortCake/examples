@@ -18,6 +18,10 @@ subprojects {
     apply plugin: 'com.diffplug.eclipse.apt'
     
     repositories {
+        maven {
+            url "http://www.gridgainsystems.com/nexus/content/repositories/external"
+            allowInsecureProtocol true
+        }
         mavenCentral()
         // google()
     }

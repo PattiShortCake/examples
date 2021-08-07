@@ -12,5 +12,8 @@ include 'ignite'
 
 //include 'oauth2-resource-server'
 //include 'oauth2-server'
+
+include 'spring-boot-admin'
 //include 'spring-cloud-gateway'
+
 //include 'webflux'
