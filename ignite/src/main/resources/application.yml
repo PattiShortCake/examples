@@ -14,3 +14,4 @@ logging:
   level:
     de.codecentric.boot.admin: debug
 #    org.springframework.boot.autoconfigure.logging.ConditionEvaluationReportLoggingListener: debug
+    org.apache.ignite.internal.managers.eventstorage.GridEventStorageManager: debug

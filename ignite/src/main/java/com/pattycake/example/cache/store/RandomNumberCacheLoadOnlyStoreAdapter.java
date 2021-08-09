@@ -1,11 +1,13 @@
 package com.pattycake.example.cache.store;
 
-import com.pattycake.example.config.ApacheIgniteConfiguration;
+import com.pattycake.example.config.ApacheIgniteCacheConfiguration;
 import com.pattycake.example.model.InputModel;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.ignite.Ignite;
+import org.apache.ignite.cache.affinity.Affinity;
 import org.apache.ignite.cache.store.CacheLoadOnlyStoreAdapter;
 import org.apache.ignite.cache.store.CacheStoreSession;
+import org.apache.ignite.cluster.ClusterNode;
 import org.apache.ignite.lang.IgniteBiTuple;
 import org.apache.ignite.resources.CacheStoreSessionResource;
 import org.apache.ignite.resources.IgniteInstanceResource;
@@ -34,16 +36,20 @@ public class RandomNumberCacheLoadOnlyStoreAdapter extends CacheLoadOnlyStoreAda
     protected Iterator<InputModel> inputIterator(@Nullable Object... args) throws CacheLoaderException {
         log.info("Getting InputModel Iterator");
 
-        if (args[0] instanceof int[]) {
-            Set<Integer> partitions = IntStream.of((int[]) args[0]).mapToObj(Integer::valueOf).collect(Collectors.toSet());
+        Set<Integer> partitions = partitions();
+        log.info("Local node is assigned partitions: {}", partitions);
 
-            return generateInput().stream()
-                    .filter(model -> partitions.contains(model.getValue() % ApacheIgniteConfiguration.CACHE_PARTITIONS))
-                    .collect(Collectors.toList())
-                    .iterator();
-        }
+        return generateInput().stream()
+                .filter(model -> partitions.contains(model.getValue() % ApacheIgniteCacheConfiguration.CACHE_PARTITIONS))
+                .collect(Collectors.toList())
+                .iterator();
+    }
 
-        return Collections.emptyIterator();
+    private Set<Integer> partitions() {
+        ClusterNode clusterNode = ignite.cluster().localNode();
+        Affinity<Object> affinity = ignite.affinity(ApacheIgniteCacheConfiguration.CACHE_NAME);
+        int[] partitions = affinity.primaryPartitions(clusterNode);
+        return IntStream.of(partitions).mapToObj(Integer::valueOf).collect(Collectors.toSet());
     }
 
     @Override

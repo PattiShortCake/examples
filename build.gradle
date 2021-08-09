@@ -1,10 +1,10 @@
 plugins {
-  id "com.diffplug.eclipse.apt" version "3.30.0"
+    id "com.diffplug.eclipse.apt" version "3.30.0"
 }
 
 ext {
     springCloudVersion = '2020.0.3'
-    springBootVersion = '2.5.0'
+    springBootVersion = '2.5.3'
     awsSdkV2Version = '2.16.77'
 }
 
@@ -16,7 +16,7 @@ version '1.0-SNAPSHOT'
 subprojects {
     apply plugin: 'java-library'
     apply plugin: 'com.diffplug.eclipse.apt'
-    
+
     repositories {
         maven {
             url "http://www.gridgainsystems.com/nexus/content/repositories/external"
@@ -25,8 +25,8 @@ subprojects {
         mavenCentral()
         // google()
     }
-    sourceCompatibility = 11
-    targetCompatibility = 11
+//    sourceCompatibility = 11
+//    targetCompatibility = 11
 
     dependencies {
         implementation platform("org.springframework.cloud:spring-cloud-dependencies:${springCloudVersion}")
@@ -36,7 +36,7 @@ subprojects {
     }
 
 
-	compileJava {
-		options.annotationProcessorGeneratedSourcesDirectory = file("${projectDir}/src/main/generated")
-	}
+    compileJava {
+        options.annotationProcessorGeneratedSourcesDirectory = file("${projectDir}/src/main/generated")
+    }
 }
