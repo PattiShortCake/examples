@@ -29,6 +29,8 @@ dependencies {
     implementation "org.springframework.boot:spring-boot-starter-security"
     implementation "org.springframework.boot:spring-boot-starter-web"
 
+    implementation "org.springframework.kafka:spring-kafka"
+
 //    implementation "org.gridgain:control-center-agent:2.10.0.0"
 
     testImplementation "org.springframework.boot:spring-boot-starter-test"
