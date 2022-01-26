@@ -1,4 +1,4 @@
-package example.gateway;
+package example.sleuth;
 
 import java.time.Duration;
 import org.junit.jupiter.api.BeforeEach;

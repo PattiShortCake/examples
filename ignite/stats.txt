@@ -1,0 +1,124 @@
+Integer
+2021-09-17 22:05:39.027  INFO 83953 --- [   scheduling-1] c.p.example.service.IgniteService        : Elapsed time: 20146 ms (attempt: 0)
+2021-09-17 22:05:59.263  INFO 83953 --- [   scheduling-1] c.p.example.service.IgniteService        : Elapsed time: 20235 ms (attempt: 1)
+2021-09-17 22:06:19.319  INFO 83953 --- [   scheduling-1] c.p.example.service.IgniteService        : Elapsed time: 20055 ms (attempt: 2)
+2021-09-17 22:06:41.169  INFO 83953 --- [   scheduling-1] c.p.example.service.IgniteService        : Elapsed time: 21850 ms (attempt: 3)
+2021-09-17 22:07:02.037  INFO 83953 --- [   scheduling-1] c.p.example.service.IgniteService        : Elapsed time: 20867 ms (attempt: 4)
+
+# Byte Array
+2021-09-17 22:16:19.847  INFO 84069 --- [   scheduling-1] c.p.example.service.IgniteService        : Elapsed time: 17036 ms (attempt: 0)
+2021-09-17 22:16:38.638  INFO 84069 --- [   scheduling-1] c.p.example.service.IgniteService        : Elapsed time: 18790 ms (attempt: 1)
+2021-09-17 22:16:56.049  INFO 84069 --- [   scheduling-1] c.p.example.service.IgniteService        : Elapsed time: 17410 ms (attempt: 2)
+2021-09-17 22:17:14.046  INFO 84069 --- [   scheduling-1] c.p.example.service.IgniteService        : Elapsed time: 17996 ms (attempt: 3)
+2021-09-17 22:17:32.560  INFO 84069 --- [   scheduling-1] c.p.example.service.IgniteService        : Elapsed time: 18513 ms (attempt: 4)
+
+# Object
+2021-09-17 22:11:22.655  INFO 84010 --- [   scheduling-1] c.p.example.service.IgniteService        : Elapsed time: 36533 ms (attempt: 0)
+2021-09-17 22:11:58.623  INFO 84010 --- [   scheduling-1] c.p.example.service.IgniteService        : Elapsed time: 35968 ms (attempt: 1)
+2021-09-17 22:12:32.485  INFO 84010 --- [   scheduling-1] c.p.example.service.IgniteService        : Elapsed time: 33862 ms (attempt: 2)
+2021-09-17 22:13:09.771  INFO 84010 --- [   scheduling-1] c.p.example.service.IgniteService        : Elapsed time: 37285 ms (attempt: 3)
+2021-09-17 22:13:44.383  INFO 84010 --- [   scheduling-1] c.p.example.service.IgniteService        : Elapsed time: 34611 ms (attempt: 4)
+
+# Object keep-binary
+2021-09-17 22:22:55.112  INFO 84141 --- [   scheduling-1] c.p.example.service.IgniteService        : Elapsed time: 22258 ms (attempt: 0)
+2021-09-17 22:23:17.555  INFO 84141 --- [   scheduling-1] c.p.example.service.IgniteService        : Elapsed time: 22443 ms (attempt: 1)
+2021-09-17 22:23:41.500  INFO 84141 --- [   scheduling-1] c.p.example.service.IgniteService        : Elapsed time: 23944 ms (attempt: 2)
+2021-09-17 22:24:04.645  INFO 84141 --- [   scheduling-1] c.p.example.service.IgniteService        : Elapsed time: 23144 ms (attempt: 3)
+2021-09-17 22:24:28.202  INFO 84141 --- [   scheduling-1] c.p.example.service.IgniteService        : Elapsed time: 23557 ms (attempt: 4)
+
+2021-09-18 15:56:34.916  INFO 1205 --- [eout-worker-#22] org.apache.ignite.internal.IgniteKernal  :
+Metrics for local node (to disable set 'metricsLogFrequency' to 0)
+    ^-- Node [id=6f188af9, uptime=00:22:30.765]
+    ^-- Cluster [hosts=1, CPUs=8, servers=1, clients=0, topVer=1, minorTopVer=1]
+    ^-- Network [addrs=[0:0:0:0:0:0:0:1%lo0, 127.0.0.1, 192.168.13.61], discoPort=47500, commPort=47100]
+    ^-- CPU [CPUs=8, curLoad=-100%, avgLoad=-99.57%, GC=0%]
+    ^-- Heap [used=2344MB, free=71.38%, comm=2978MB]
+    ^-- Off-heap memory [used=1931MB, free=46%, allocated=2128MB]
+    ^-- Page memory [pages=491580]
+    ^--   sysMemPlc region [type=internal, persistence=false, lazyAlloc=false,
+      ...  initCfg=40MB, maxCfg=100MB, usedRam=0MB, freeRam=99.21%, allocRam=40MB]
+    ^--   default region [type=default, persistence=false, lazyAlloc=true,
+      ...  initCfg=256MB, maxCfg=3276MB, usedRam=1930MB, freeRam=41.08%, allocRam=2048MB]
+    ^--   TxLog region [type=internal, persistence=false, lazyAlloc=false,
+      ...  initCfg=40MB, maxCfg=100MB, usedRam=0MB, freeRam=100%, allocRam=40MB]
+    ^--   volatileDsMemPlc region [type=user, persistence=false, lazyAlloc=true,
+      ...  initCfg=40MB, maxCfg=100MB, usedRam=0MB, freeRam=100%, allocRam=0MB]
+    ^-- Outbound messages queue [size=0]
+    ^-- Public thread pool [active=0, idle=0, qSize=0]
+    ^-- System thread pool [active=0, idle=7, qSize=0]
+
+# Object keep-binary (on-heap)
+2021-09-17 22:30:58.961  INFO 84188 --- [   scheduling-1] c.p.example.service.IgniteService        : Elapsed time: 24446 ms (attempt: 0)
+2021-09-17 22:31:26.751  INFO 84188 --- [   scheduling-1] c.p.example.service.IgniteService        : Elapsed time: 27790 ms (attempt: 1)
+2021-09-17 22:31:54.238  INFO 84188 --- [   scheduling-1] c.p.example.service.IgniteService        : Elapsed time: 27486 ms (attempt: 2)
+2021-09-17 22:32:26.471  INFO 84188 --- [   scheduling-1] c.p.example.service.IgniteService        : Elapsed time: 32233 ms (attempt: 3)
+2021-09-17 22:32:54.778  INFO 84188 --- [   scheduling-1] c.p.example.service.IgniteService        : Elapsed time: 28306 ms (attempt: 4)
+
+# Object (on-heap)
+2021-09-17 22:35:32.548  INFO 84226 --- [   scheduling-1] c.p.example.service.IgniteService        : Elapsed time: 38169 ms (attempt: 0)
+2021-09-17 22:36:13.911  INFO 84226 --- [   scheduling-1] c.p.example.service.IgniteService        : Elapsed time: 41363 ms (attempt: 1)
+2021-09-17 22:36:53.205  INFO 84226 --- [   scheduling-1] c.p.example.service.IgniteService        : Elapsed time: 39292 ms (attempt: 2)
+2021-09-17 22:37:29.591  INFO 84226 --- [   scheduling-1] c.p.example.service.IgniteService        : Elapsed time: 36386 ms (attempt: 3)
+2021-09-17 22:38:04.563  INFO 84226 --- [   scheduling-1] c.p.example.service.IgniteService        : Elapsed time: 34971 ms (attempt: 4)
+
+SQL-1_000_000
+2021-09-17 23:38:26.402  INFO 85024 --- [   scheduling-1] c.p.example.service.IgniteService        : Elapsed time: 3601 ms count[1000000] (attempt: 1)
+2021-09-17 23:38:29.609  INFO 85024 --- [   scheduling-1] c.p.example.service.IgniteService        : Elapsed time: 3206 ms count[1000000] (attempt: 2)
+2021-09-17 23:38:32.566  INFO 85024 --- [   scheduling-1] c.p.example.service.IgniteService        : Elapsed time: 2957 ms count[1000000] (attempt: 3)
+2021-09-17 23:42:07.519  INFO 85061 --- [   scheduling-1] c.p.example.service.IgniteService        : Elapsed time: 2132 ms count[1000000] (attempt: 4)
+
+2021-09-17 23:53:54.638  INFO 85168 --- [eout-worker-#22] org.apache.ignite.internal.IgniteKernal  :
+Metrics for local node (to disable set 'metricsLogFrequency' to 0)
+    ^-- Node [id=df8d227a, uptime=00:03:00.028]
+    ^-- Cluster [hosts=1, CPUs=8, servers=1, clients=0, topVer=1, minorTopVer=2]
+    ^-- Network [addrs=[0:0:0:0:0:0:0:1%lo0, 127.0.0.1, 192.168.13.61], discoPort=47500, commPort=47100]
+    ^-- CPU [CPUs=8, curLoad=-100%, avgLoad=-98.67%, GC=0%]
+    ^-- Heap [used=2107MB, free=74.27%, comm=3096MB]
+    ^-- Off-heap memory [used=1314MB, free=63.25%, allocated=1616MB]
+    ^-- Page memory [pages=334552]
+    ^--   sysMemPlc region [type=internal, persistence=false, lazyAlloc=false,
+      ...  initCfg=40MB, maxCfg=100MB, usedRam=0MB, freeRam=99.21%, allocRam=40MB]
+    ^--   default region [type=default, persistence=false, lazyAlloc=true,
+      ...  initCfg=256MB, maxCfg=3276MB, usedRam=1313MB, freeRam=59.91%, allocRam=1536MB]
+    ^--   TxLog region [type=internal, persistence=false, lazyAlloc=false,
+      ...  initCfg=40MB, maxCfg=100MB, usedRam=0MB, freeRam=100%, allocRam=40MB]
+    ^--   volatileDsMemPlc region [type=user, persistence=false, lazyAlloc=true,
+      ...  initCfg=40MB, maxCfg=100MB, usedRam=0MB, freeRam=100%, allocRam=0MB]
+    ^-- Outbound messages queue [size=0]
+    ^-- Public thread pool [active=0, idle=0, qSize=0]
+    ^-- System thread pool [active=0, idle=7, qSize=0]
+
+SQL-10_000_000
+2021-09-17 23:54:21.500  INFO 85168 --- [   scheduling-1] c.p.example.service.IgniteService        : Elapsed time: 25151 ms count[10000000] (attempt: 0)
+2021-09-17 23:54:42.498  INFO 85168 --- [   scheduling-1] c.p.example.service.IgniteService        : Elapsed time: 20998 ms count[10000000] (attempt: 1)
+2021-09-17 23:55:04.799  INFO 85168 --- [   scheduling-1] c.p.example.service.IgniteService        : Elapsed time: 22300 ms count[10000000] (attempt: 2)
+2021-09-17 23:55:27.335  INFO 85168 --- [   scheduling-1] c.p.example.service.IgniteService        : Elapsed time: 22535 ms count[10000000] (attempt: 3)
+2021-09-17 23:55:49.834  INFO 85168 --- [   scheduling-1] c.p.example.service.IgniteService        : Elapsed time: 22499 ms count[10000000] (attempt: 4)
+
+# SQL Join
+2021-09-18 00:16:35.201  INFO 85310 --- [eout-worker-#22] org.apache.ignite.internal.IgniteKernal  :
+Metrics for local node (to disable set 'metricsLogFrequency' to 0)
+    ^-- Node [id=249f0855, uptime=00:06:00.053]
+    ^-- Cluster [hosts=1, CPUs=8, servers=1, clients=0, topVer=1, minorTopVer=3]
+    ^-- Network [addrs=[0:0:0:0:0:0:0:1%lo0, 127.0.0.1, 192.168.13.61], discoPort=47500, commPort=47100]
+    ^-- CPU [CPUs=8, curLoad=-100%, avgLoad=-99.33%, GC=0%]
+    ^-- Heap [used=3877MB, free=52.67%, comm=4856MB]
+    ^-- Off-heap memory [used=2697MB, free=24.59%, allocated=2896MB]
+    ^-- Page memory [pages=686514]
+    ^--   sysMemPlc region [type=internal, persistence=false, lazyAlloc=false,
+      ...  initCfg=40MB, maxCfg=100MB, usedRam=0MB, freeRam=99.21%, allocRam=40MB]
+    ^--   default region [type=default, persistence=false, lazyAlloc=true,
+      ...  initCfg=256MB, maxCfg=3276MB, usedRam=2696MB, freeRam=17.71%, allocRam=2816MB]
+    ^--   TxLog region [type=internal, persistence=false, lazyAlloc=false,
+      ...  initCfg=40MB, maxCfg=100MB, usedRam=0MB, freeRam=100%, allocRam=40MB]
+    ^--   volatileDsMemPlc region [type=user, persistence=false, lazyAlloc=true,
+      ...  initCfg=40MB, maxCfg=100MB, usedRam=0MB, freeRam=100%, allocRam=0MB]
+    ^-- Outbound messages queue [size=0]
+    ^-- Public thread pool [active=0, idle=0, qSize=0]
+    ^-- System thread pool [active=0, idle=7, qSize=0]
+# JOIN
+2021-09-18 00:18:18.745  INFO 85310 --- [   scheduling-1] c.p.example.service.IgniteService        : Elapsed time: 110618 ms count[10000000] (attempt: 0)
+
+# IN
+2021-09-18 00:28:08.097  INFO 85362 --- [   scheduling-1] c.p.example.service.IgniteService        : Elapsed time: 91799 ms count[10000000] (attempt: 0)
+2021-09-18 00:29:39.466  INFO 85362 --- [   scheduling-1] c.p.example.service.IgniteService        : Elapsed time: 91368 ms count[10000000] (attempt: 1)

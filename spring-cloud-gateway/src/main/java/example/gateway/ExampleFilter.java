@@ -1,4 +1,4 @@
-package example.gateway;
+package example.sleuth;
 
 import java.time.Duration;
 import java.util.function.Consumer;
@@ -33,7 +33,7 @@ public class ExampleFilter implements GlobalFilter, Ordered {
                 .subscribe(emitter -> sink.next(emitter));
             try {
               Thread.sleep(1_000);
-            } catch (InterruptedException e) {
+            } catch (final InterruptedException e) {
               e.printStackTrace();
             }
           } while (true);

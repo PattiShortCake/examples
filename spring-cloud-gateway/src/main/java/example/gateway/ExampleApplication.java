@@ -1,4 +1,4 @@
-package example.gateway;
+package example.sleuth;
 
 import java.util.List;
 import org.slf4j.Logger;
@@ -13,14 +13,14 @@ import org.springframework.core.Ordered;
 public class ExampleApplication {
 
   private static final Logger LOGGER = LoggerFactory.getLogger(ExampleApplication.class);
-  public static void main(String[] args) {
+  public static void main(final String[] args) {
       SpringApplication.run(ExampleApplication.class);
   }
 
   @Bean
-  public String displayGlobalFilters(List<GlobalFilter> globalFilters) {
+  public String displayGlobalFilters(final List<GlobalFilter> globalFilters) {
 
-    for(GlobalFilter filter : globalFilters)  {
+    for(final GlobalFilter filter : globalFilters)  {
       if (filter instanceof Ordered) {
         LOGGER.info("{} -> {}", filter.getClass().getName(), ((Ordered) filter).getOrder());
       }

@@ -3,9 +3,9 @@ plugins {
 }
 
 ext {
-    springCloudVersion = '2020.0.3'
-    springBootVersion = '2.5.3'
-    awsSdkV2Version = '2.16.77'
+    springCloudVersion = '2021.0.0'
+    springBootVersion = '2.6.1'
+    awsSdkV2Version = '2.17.41'
 }
 
 
@@ -14,29 +14,32 @@ version '1.0-SNAPSHOT'
 
 
 subprojects {
-    apply plugin: 'java-library'
-    apply plugin: 'com.diffplug.eclipse.apt'
+    if (it.name != 'javacpp-native') {
+        apply plugin: 'java-library'
+        apply plugin: 'com.diffplug.eclipse.apt'
 
-    repositories {
-        maven {
-            url "http://www.gridgainsystems.com/nexus/content/repositories/external"
-            allowInsecureProtocol true
+        repositories {
+            maven {
+                url "http://www.gridgainsystems.com/nexus/content/repositories/external"
+                allowInsecureProtocol true
+            }
+            mavenCentral()
+            // google()
         }
-        mavenCentral()
-        // google()
-    }
-//    sourceCompatibility = 11
+        sourceCompatibility = JavaVersion.VERSION_11
 //    targetCompatibility = 11
 
-    dependencies {
-        implementation platform("org.springframework.cloud:spring-cloud-dependencies:${springCloudVersion}")
-        implementation platform("org.springframework.boot:spring-boot-dependencies:${springBootVersion}")
-        annotationProcessor platform("org.springframework.boot:spring-boot-dependencies:${springBootVersion}")
-        implementation platform("software.amazon.awssdk:bom:${awsSdkV2Version}")
-    }
+        dependencies {
+            implementation platform("org.springframework.cloud:spring-cloud-dependencies:${springCloudVersion}")
+            implementation platform("org.springframework.boot:spring-boot-dependencies:${springBootVersion}")
+            annotationProcessor platform("org.springframework.boot:spring-boot-dependencies:${springBootVersion}")
+            implementation platform("software.amazon.awssdk:bom:${awsSdkV2Version}")
+        }
 
 
-    compileJava {
-        options.annotationProcessorGeneratedSourcesDirectory = file("${projectDir}/src/main/generated")
+        compileJava {
+            options.annotationProcessorGeneratedSourcesDirectory = file("${projectDir}/src/main/generated")
+        }
     }
+
 }

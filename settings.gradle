@@ -6,6 +6,9 @@ rootProject.name = 'example'
 //include 'graphql-client'
 include 'ignite'
 
+//include 'javacpp'
+//include 'javacpp-native'
+
 //include 'multi-project:api'
 //include 'multi-project:core'
 //include 'multi-project:project'
@@ -13,7 +16,8 @@ include 'ignite'
 //include 'oauth2-resource-server'
 //include 'oauth2-server'
 
-include 'spring-boot-admin'
+//include 'spring-boot-admin'
 //include 'spring-cloud-gateway'
+//include 'spring-cloud-sleuth'
 
 //include 'webflux'

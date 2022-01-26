@@ -21,7 +21,7 @@ import java.util.Objects;
 import java.util.Properties;
 import java.util.concurrent.ConcurrentHashMap;
 
-@Service
+//@Service
 @Slf4j
 public class KafkaService implements DisposableBean {
 

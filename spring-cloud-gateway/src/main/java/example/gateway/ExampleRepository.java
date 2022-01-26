@@ -1,4 +1,4 @@
-package example.gateway;
+package example.sleuth;
 
 import java.util.concurrent.atomic.AtomicBoolean;
 import org.slf4j.Logger;

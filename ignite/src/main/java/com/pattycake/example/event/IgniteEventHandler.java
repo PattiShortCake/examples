@@ -1,19 +1,25 @@
 package com.pattycake.example.event;
 
 import com.pattycake.example.config.ApacheIgniteCacheConfiguration;
+import java.util.Collection;
+import java.util.Set;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.ignite.Ignite;
 import org.apache.ignite.IgniteCache;
 import org.apache.ignite.IgniteEvents;
+import org.apache.ignite.cache.affinity.Affinity;
+import org.apache.ignite.cluster.ClusterNode;
 import org.apache.ignite.events.CacheEvent;
 import org.apache.ignite.events.DiscoveryEvent;
 import org.apache.ignite.events.Event;
 import org.apache.ignite.events.EventType;
+import org.apache.ignite.internal.events.DiscoveryCustomEvent;
+import org.apache.ignite.internal.processors.cache.CacheAffinityChangeMessage;
 import org.apache.ignite.lang.IgnitePredicate;
 import org.springframework.beans.factory.InitializingBean;
 import org.springframework.stereotype.Component;
-
-import java.util.Collection;
 
 @Component
 @Slf4j
@@ -33,9 +39,13 @@ public class IgniteEventHandler implements InitializingBean {
 
     private IgnitePredicate<Event> localListener() {
         return event -> {
-            log.info("Event[{}]", event);
+            if (event.type() != EventType.EVT_NODE_METRICS_UPDATED) {
+                log.info("Event[{}]", event);
+            }
             if (event instanceof CacheEvent) {
                 handleEvent((CacheEvent) event);
+            } else if (event instanceof DiscoveryCustomEvent) {
+                handleEvent((DiscoveryCustomEvent) event);
             } else if (event instanceof DiscoveryEvent) {
                 handleEvent((DiscoveryEvent) event);
             }
@@ -43,14 +53,28 @@ public class IgniteEventHandler implements InitializingBean {
         };
     }
 
-
     private void handleEvent(final DiscoveryEvent event) {
         if (event.type() == EventType.EVT_NODE_LEFT) {
             final IgniteCache<Object, Object> cache = ignite.cache(ApacheIgniteCacheConfiguration.CACHE_NAME);
             final Collection<Integer> lostPartitions = cache.lostPartitions();
-            log.error("Lost partitions: {}", lostPartitions);
+
+            log.error("Lost partitions: {} Local partitions: {}", lostPartitions, partitions());
         }
     }
+
+    private void handleEvent(final DiscoveryCustomEvent event) {
+        if (event.customMessage() instanceof CacheAffinityChangeMessage) {
+            log.info("Yo, the affinity changed!  Local partitions: {}", partitions());
+        }
+    }
+
+    private Set<Integer> partitions() {
+        final ClusterNode clusterNode = ignite.cluster().localNode();
+        final Affinity<Object> affinity = ignite.affinity(ApacheIgniteCacheConfiguration.CACHE_NAME);
+        final int[] partitions = affinity.primaryPartitions(clusterNode);
+        return IntStream.of(partitions).mapToObj(Integer::valueOf).collect(Collectors.toSet());
+    }
+
 
     private void handleEvent(final CacheEvent cacheEvent) {
         if (cacheEvent.type() == EventType.EVT_CACHE_STARTED) {

@@ -1,4 +1,4 @@
-package example.gateway;
+package example.sleuth;
 
 import lombok.Builder;
 import lombok.EqualsAndHashCode;

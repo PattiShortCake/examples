@@ -3,7 +3,7 @@ plugins {
 }
 
 ext {
-    igniteVersion = "2.10.0"
+    igniteVersion = "2.11.1"
 }
 
 sourceCompatibility = JavaVersion.VERSION_11
@@ -24,16 +24,37 @@ dependencies {
         }
     }
     implementation "org.apache.ignite:ignite-slf4j:${igniteVersion}"
+    implementation "org.apache.ignite:ignite-spring:${igniteVersion}"
+    implementation "org.apache.ignite:ignite-opencensus:${igniteVersion}"
 
     implementation "org.springframework.boot:spring-boot-starter-actuator"
     implementation "org.springframework.boot:spring-boot-starter-security"
     implementation "org.springframework.boot:spring-boot-starter-web"
 
+    // Sleuth
+    implementation("org.springframework.cloud:spring-cloud-starter-sleuth")
+    implementation("org.springframework.cloud:spring-cloud-sleuth-zipkin")
+    implementation('com.esotericsoftware.kryo:kryo5:5.2.0')
+
     implementation "org.springframework.kafka:spring-kafka"
+
+    implementation 'io.micrometer:micrometer-core'
 
 //    implementation "org.gridgain:control-center-agent:2.10.0.0"
 
     testImplementation "org.springframework.boot:spring-boot-starter-test"
+}
+
+test {
+    useJUnitPlatform()
+    jvmArgs("--add-exports=java.base/jdk.internal.misc=ALL-UNNAMED",
+            "--add-exports=java.base/sun.nio.ch=ALL-UNNAMED",
+            "--add-exports=java.management/com.sun.jmx.mbeanserver=ALL-UNNAMED",
+            "--add-exports=jdk.internal.jvmstat/sun.jvmstat.monitor=ALL-UNNAMED",
+            "--add-exports=java.base/sun.reflect.generics.reflectiveObjects=ALL-UNNAMED",
+            "--add-opens=jdk.management/com.sun.management.internal=ALL-UNNAMED",
+            "--illegal-access=permit"
+    )
 }
 
 bootJar {
