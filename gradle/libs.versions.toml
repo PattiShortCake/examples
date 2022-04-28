@@ -1,0 +1,36 @@
+[versions]
+graphql-kickstart = "12.0.0"
+ignite = "2.12.0"
+spring-boot = "2.6.7"
+
+[libraries]
+awssdk-bom = { module = "software.amazon.awssdk:bom", version = "2.17.177" }
+
+# GraphQL kickstart
+graphql-graphql-spring-boot-starter = { module = "com.graphql-java-kickstart:graphql-spring-boot-starter", version.ref = "graphql-kickstart" }
+graphql-graphiql-spring-boot-starter = { module = "com.graphql-java-kickstart:graphiql-spring-boot-starter", version = "11.1.0" }
+graphql-voyager-spring-boot-starter = { module = "com.graphql-java-kickstart:voyager-spring-boot-starter", version = "11.1.0" }
+graphql-graphql-spring-boot-starter-test = { module = "com.graphql-java-kickstart:graphql-spring-boot-starter-test", version.ref = "graphql-kickstart" }
+graphql-tools = { module = "com.graphql-java-kickstart:graphql-java-tools", version = "12.0.2" }
+
+# Must downgrade H2 because ignite-indexing:2.10.0 uses unsupported DB connection parameter, MULTI_THREADED=1
+h2 = { module = "com.h2database:h2", version = { strictly = "1.4.197" } }
+
+ignite-core = { module = "org.apache.ignite:ignite-core", version.ref = "ignite" }
+ignite-indexing = { module = "org.apache.ignite:ignite-indexing", version.ref = "ignite" }
+ignite-slf4j = { module = "org.apache.ignite:ignite-slf4j", version.ref = "ignite" }
+ignite-spring = { module = "org.apache.ignite:ignite-spring", version.ref = "ignite" }
+ignite-opencensus = { module = "org.apache.ignite:ignite-opencensus", version.ref = "ignite" }
+
+kryo5 = { module = "com.esotericsoftware.kryo:kryo5", version = "5.2.0" }
+
+spring-boot-dependencies = { module = "org.springframework.boot:spring-boot-dependencies", version.ref = "spring-boot" }
+spring-cloud-dependencies = { module = "org.springframework.cloud:spring-cloud-dependencies", version = "2021.0.1" }
+
+[bundles]
+graphql-kickstart = ["graphql-graphql-spring-boot-starter", "graphql-graphiql-spring-boot-starter", "graphql-voyager-spring-boot-starter", "graphql-tools"]
+
+[plugins]
+eclipse-apt = { id = "com.diffplug.eclipse.apt", version = "3.36.2" }
+spring-boot = { id = "org.springframework.boot", version.ref = "spring-boot" }
+lombok = { id = "io.freefair.lombok", version = "6.4.3" }

@@ -1,8 +1,8 @@
 rootProject.name = 'example'
 
-//include 'aws'
+include 'aws'
 //include 'dependency-manager'
-//include 'graphql'
+include 'graphql'
 //include 'graphql-client'
 include 'ignite'
 
@@ -21,3 +21,5 @@ include 'ignite'
 //include 'spring-cloud-sleuth'
 
 //include 'webflux'
+
+

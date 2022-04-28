@@ -1,13 +1,10 @@
 plugins {
-    id "org.springframework.boot" version "2.5.2"
+    alias(libs.plugins.lombok)
+    alias(libs.plugins.spring.boot)
 }
 
-ext {
-    igniteVersion = "2.12.0"
-}
-
-sourceCompatibility = JavaVersion.VERSION_11
-targetCompatibility = JavaVersion.VERSION_11
+sourceCompatibility = JavaVersion.VERSION_17
+targetCompatibility = JavaVersion.VERSION_17
 
 dependencies {
     compileOnly 'org.projectlombok:lombok'
@@ -15,17 +12,12 @@ dependencies {
 
 //    implementation 'de.codecentric:spring-boot-admin-starter-client:2.4.3'
 
-    implementation "org.apache.ignite:ignite-core:${igniteVersion}"
-    implementation "org.apache.ignite:ignite-indexing:${igniteVersion}"
-    implementation('com.h2database:h2') {
-        // Must downgrade H2 because ignite-indexing:2.10.0 uses unsupported DB connection parameter, MULTI_THREADED=1
-        version {
-            strictly '1.4.197'
-        }
-    }
-    implementation "org.apache.ignite:ignite-slf4j:${igniteVersion}"
-    implementation "org.apache.ignite:ignite-spring:${igniteVersion}"
-    implementation "org.apache.ignite:ignite-opencensus:${igniteVersion}"
+    implementation(libs.h2)
+    implementation(libs.ignite.core)
+    implementation(libs.ignite.indexing)
+    implementation(libs.ignite.opencensus)
+    implementation(libs.ignite.slf4j)
+    implementation(libs.ignite.spring)
 
     implementation "org.springframework.boot:spring-boot-starter-actuator"
     implementation "org.springframework.boot:spring-boot-starter-security"
@@ -34,7 +26,7 @@ dependencies {
     // Sleuth
     implementation("org.springframework.cloud:spring-cloud-starter-sleuth")
     implementation("org.springframework.cloud:spring-cloud-sleuth-zipkin")
-    implementation('com.esotericsoftware.kryo:kryo5:5.2.0')
+    implementation(libs.kryo5)
 
     implementation "org.springframework.kafka:spring-kafka"
 

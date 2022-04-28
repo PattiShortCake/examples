@@ -1,6 +1,0 @@
-enum Color {
-  YELLOW
-  BLUE
-  PINK
-  RED
-}

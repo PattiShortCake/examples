@@ -1,6 +1,5 @@
 package example.graphql.web.controller.graphql;
 
-import com.coxautodev.graphql.tools.GraphQLQueryResolver;
 import example.graphql.web.controller.graphql.dto.Color;
 import example.graphql.web.controller.graphql.dto.Profile;
 import example.graphql.web.controller.graphql.dto.SourceRecord;
@@ -10,7 +9,7 @@ import java.util.stream.Stream;
 import org.springframework.stereotype.Component;
 
 @Component
-public class Query implements GraphQLQueryResolver {
+public class Query implements graphql.kickstart.tools.GraphQLQueryResolver {
 
   public List<Profile> profiles() {
     return buildProfiles().collect(Collectors.toList());
