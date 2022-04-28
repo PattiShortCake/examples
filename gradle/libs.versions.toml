@@ -1,6 +1,6 @@
 [versions]
 graphql-kickstart = "12.0.0"
-ignite = "2.12.0"
+ignite = "2.13.0"
 spring-boot = "2.6.7"
 
 [libraries]
