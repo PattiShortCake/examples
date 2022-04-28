@@ -16,11 +16,7 @@ graphql-tools = { module = "com.graphql-java-kickstart:graphql-java-tools", vers
 # Must downgrade H2 because ignite-indexing:2.10.0 uses unsupported DB connection parameter, MULTI_THREADED=1
 h2 = { module = "com.h2database:h2", version = { strictly = "1.4.197" } }
 
-ignite-core = { module = "org.apache.ignite:ignite-core", version.ref = "ignite" }
-ignite-indexing = { module = "org.apache.ignite:ignite-indexing", version.ref = "ignite" }
-ignite-slf4j = { module = "org.apache.ignite:ignite-slf4j", version.ref = "ignite" }
-ignite-spring = { module = "org.apache.ignite:ignite-spring", version.ref = "ignite" }
-ignite-opencensus = { module = "org.apache.ignite:ignite-opencensus", version.ref = "ignite" }
+ignite-bom = { module = "org.apache.ignite:ignite-bom", version = "2.13.0" }
 
 kryo5 = { module = "com.esotericsoftware.kryo:kryo5", version = "5.2.0" }
 

@@ -13,11 +13,11 @@ dependencies {
 //    implementation 'de.codecentric:spring-boot-admin-starter-client:2.4.3'
 
     implementation(libs.h2)
-    implementation(libs.ignite.core)
-    implementation(libs.ignite.indexing)
-    implementation(libs.ignite.opencensus)
-    implementation(libs.ignite.slf4j)
-    implementation(libs.ignite.spring)
+    implementation("org.apache.ignite:ignite-core")
+    implementation("org.apache.ignite:ignite-indexing")
+    implementation("org.apache.ignite:ignite-opencensus")
+    implementation("org.apache.ignite:ignite-slf4j")
+    implementation("org.apache.ignite:ignite-spring")
 
     implementation "org.springframework.boot:spring-boot-starter-actuator"
     implementation "org.springframework.boot:spring-boot-starter-security"

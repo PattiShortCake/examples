@@ -1,15 +1,16 @@
 plugins {
     alias(libs.plugins.eclipse.apt)
+    alias(libs.plugins.lombok)
 }
 
 group 'com.example'
 version '1.0-SNAPSHOT'
 
-
 subprojects {
     if (it.name != 'javacpp-native') {
         apply plugin: 'java-library'
         apply plugin: 'com.diffplug.eclipse.apt'
+        apply plugin: 'io.freefair.lombok'
 
         repositories {
             maven {
@@ -23,16 +24,16 @@ subprojects {
 //    targetCompatibility = 11
 
         dependencies {
+            implementation platform(libs.ignite.bom)
             implementation platform(libs.spring.cloud.dependencies)
             implementation platform(libs.spring.boot.dependencies)
             annotationProcessor platform(libs.spring.boot.dependencies)
             implementation platform(libs.awssdk.bom)
         }
 
-
-        compileJava {
-            options.annotationProcessorGeneratedSourcesDirectory = file("${projectDir}/src/main/generated")
-        }
+//        compileJava {
+//            options.annotationProcessorGeneratedSourcesDirectory = file("${projectDir}/src/main/generated")
+//        }
     }
 
 }
