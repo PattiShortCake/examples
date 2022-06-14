@@ -1,7 +1,7 @@
 [versions]
 graphql-kickstart = "12.0.0"
 ignite = "2.13.0"
-spring-boot = "2.6.7"
+spring-boot = "2.7.0"
 
 [libraries]
 awssdk-bom = { module = "software.amazon.awssdk:bom", version = "2.17.177" }
@@ -21,7 +21,7 @@ ignite-bom = { module = "org.apache.ignite:ignite-bom", version = "2.13.0" }
 kryo5 = { module = "com.esotericsoftware.kryo:kryo5", version = "5.2.0" }
 
 spring-boot-dependencies = { module = "org.springframework.boot:spring-boot-dependencies", version.ref = "spring-boot" }
-spring-cloud-dependencies = { module = "org.springframework.cloud:spring-cloud-dependencies", version = "2021.0.1" }
+spring-cloud-dependencies = { module = "org.springframework.cloud:spring-cloud-dependencies", version = "2021.0.3" }
 
 [bundles]
 graphql-kickstart = ["graphql-graphql-spring-boot-starter", "graphql-graphiql-spring-boot-starter", "graphql-voyager-spring-boot-starter", "graphql-tools"]

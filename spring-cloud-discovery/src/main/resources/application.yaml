@@ -1,0 +1,11 @@
+spring:
+  application:
+    name: sleuth-example
+
+logging:
+  level:
+    org:
+      springframework:
+        web:
+          servlet:
+            DispatcherServlet: DEBUG

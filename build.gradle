@@ -25,7 +25,11 @@ subprojects {
 
         dependencies {
             implementation platform(libs.ignite.bom)
-            implementation platform(libs.spring.cloud.dependencies)
+            implementation(platform(libs.spring.cloud.dependencies)) {
+                exclude group: "org.apache.curator", module: "curator-x-discovery"
+                exclude group: "org.apache.curator", module: "curator-framework"
+                exclude group: "org.apache.curator", module: "curator-recipes"
+            }
             implementation platform(libs.spring.boot.dependencies)
             annotationProcessor platform(libs.spring.boot.dependencies)
             implementation platform(libs.awssdk.bom)

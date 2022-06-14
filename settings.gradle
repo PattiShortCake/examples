@@ -17,6 +17,7 @@ include 'ignite'
 //include 'oauth2-server'
 
 //include 'spring-boot-admin'
+include 'spring-cloud-discovery'
 //include 'spring-cloud-gateway'
 //include 'spring-cloud-sleuth'
 

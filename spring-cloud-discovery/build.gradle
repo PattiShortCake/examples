@@ -1,0 +1,19 @@
+dependencies {
+    implementation("org.springframework.boot:spring-boot-starter-web")
+    implementation("org.springframework.cloud:spring-cloud-starter-zookeeper-discovery:3.1.2") {
+        exclude group: "org.apache.curator", module: "curator-x-discovery"
+//        exclude group: "org.apache.curator", module: "curator-framework"
+//        exclude group: "org.apache.curator", module: "curator-recipes"
+    }
+    implementation("org.apache.curator:curator-x-discovery:4.3.0")
+
+    testCompileOnly("org.projectlombok:lombok")
+    testAnnotationProcessor("org.projectlombok:lombok")
+
+    testImplementation("org.springframework.boot:spring-boot-starter-test")
+}
+
+test {
+    useJUnitPlatform()
+}
+
