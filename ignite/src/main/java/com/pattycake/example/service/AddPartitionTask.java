@@ -1,6 +1,6 @@
 package com.pattycake.example.service;
 
-import com.pattycake.example.config.ApacheIgniteCacheConfiguration;
+import com.pattycake.example.cache.loader.CacheLoader;
 import com.pattycake.example.model.InputModel;
 import com.pattycake.example.tracing.SleuthIgniteSpan;
 import com.pattycake.example.tracing.SleuthTracingPropagatorGetter;
@@ -44,7 +44,7 @@ public class AddPartitionTask implements IgniteCallable<Integer> {
         this.partition = partition;
         this.spanMap = spanMap;
 //        this.parentSpan = parentSpan;
-        this.extractor = new SleuthTracingPropagatorGetter();
+        extractor = new SleuthTracingPropagatorGetter();
     }
 
     @SpringResource(resourceClass = Tracer.class)
@@ -66,9 +66,10 @@ public class AddPartitionTask implements IgniteCallable<Integer> {
             .name("addPartitionTask");
 
         final Span initialSpan = spanBuilder.start();
-        try (final Tracer.SpanInScope ws = this.tracer.withSpan(initialSpan)) {
+        try (final Tracer.SpanInScope ws = tracer.withSpan(initialSpan)) {
 //        try (final Tracer.SpanInScope ws = this.tracer.withSpan(parentSpan)) {
-            newSpan = this.tracer.nextSpan().name("sum-partition-" + partition).tag("partition", Integer.toString(partition)).start();
+            newSpan = tracer.nextSpan().name("sum-partition-" + partition)
+                .tag("partition", Integer.toString(partition)).start();
             return sum();
         } finally {
             // Once done remember to end the span. This will allow collecting
@@ -82,7 +83,7 @@ public class AddPartitionTask implements IgniteCallable<Integer> {
 
     @NotNull
     private Integer sum() {
-        final IgniteCache<String, Integer> cache = ignite.cache(ApacheIgniteCacheConfiguration.CACHE_NAME);
+        final IgniteCache<String, Integer> cache = ignite.cache(CacheLoader.CACHE_NAME);
         try (final QueryCursor<Entry<String, InputModel>> cursor = cache.query(new ScanQuery<String, InputModel>(partition).setLocal(true))) {
             final Optional<Integer> sum = StreamSupport.stream(cursor.spliterator(), false)
 //                .peek(entry -> log.info("key[{}] value[{}]", entry.getKey(), entry.getValue()))

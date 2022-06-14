@@ -1,6 +1,6 @@
 package com.pattycake.example.cache.store;
 
-import com.pattycake.example.config.ApacheIgniteCacheConfiguration;
+import com.pattycake.example.cache.loader.CacheLoader;
 import com.pattycake.example.model.InputModel;
 import java.util.Iterator;
 import java.util.List;
@@ -51,19 +51,9 @@ public class RandomNumberCacheLoadOnlyStoreAdapter extends CacheLoadOnlyStoreAda
 
     private Set<Integer> partitions() {
         final ClusterNode clusterNode = ignite.cluster().localNode();
-        final Affinity<Object> affinity = ignite.affinity(ApacheIgniteCacheConfiguration.CACHE_NAME);
+        final Affinity<Object> affinity = ignite.affinity(CacheLoader.CACHE_NAME);
         final int[] partitions = affinity.primaryPartitions(clusterNode);
         return IntStream.of(partitions).mapToObj(Integer::valueOf).collect(Collectors.toSet());
-    }
-
-    @Override
-    protected @Nullable IgniteBiTuple<String, InputModel> parse(final InputModel rec, @Nullable final Object... args) {
-//        log.info("Adding InputModel[{}]", rec);
-        final int count = counter.incrementAndGet();
-        if (count % 5_000 == 0) {
-            log.info("Loaded {} records", count);
-        }
-        return new IgniteBiTuple<>(rec.getKey(), rec);
     }
 
     private List<InputModel> generateInput() {
@@ -73,6 +63,17 @@ public class RandomNumberCacheLoadOnlyStoreAdapter extends CacheLoadOnlyStoreAda
                 .build()
             )
             .collect(Collectors.toList());
+    }
+
+    @Override
+    protected @Nullable IgniteBiTuple<String, InputModel> parse(final InputModel rec,
+        @Nullable final Object... args) {
+//        log.info("Adding InputModel[{}]", rec);
+        final int count = counter.incrementAndGet();
+        if (count % 5_000 == 0) {
+            log.info("Loaded {} records", count);
+        }
+        return new IgniteBiTuple<>(rec.getKey(), rec);
     }
 
 

@@ -1,6 +1,6 @@
 package com.pattycake.example.event;
 
-import com.pattycake.example.config.ApacheIgniteCacheConfiguration;
+import com.pattycake.example.cache.loader.CacheLoader;
 import java.util.Collection;
 import java.util.Set;
 import java.util.stream.Collectors;
@@ -19,9 +19,8 @@ import org.apache.ignite.internal.events.DiscoveryCustomEvent;
 import org.apache.ignite.internal.processors.cache.CacheAffinityChangeMessage;
 import org.apache.ignite.lang.IgnitePredicate;
 import org.springframework.beans.factory.InitializingBean;
-import org.springframework.stereotype.Component;
 
-@Component
+//@Component
 @Slf4j
 public class IgniteEventHandler implements InitializingBean {
 
@@ -55,10 +54,10 @@ public class IgniteEventHandler implements InitializingBean {
 
     private void handleEvent(final DiscoveryEvent event) {
         if (event.type() == EventType.EVT_NODE_LEFT) {
-            final IgniteCache<Object, Object> cache = ignite.cache(ApacheIgniteCacheConfiguration.CACHE_NAME);
-            final Collection<Integer> lostPartitions = cache.lostPartitions();
+          final IgniteCache<Object, Object> cache = ignite.cache(CacheLoader.CACHE_NAME);
+          final Collection<Integer> lostPartitions = cache.lostPartitions();
 
-            log.error("Lost partitions: {} Local partitions: {}", lostPartitions, partitions());
+          log.error("Lost partitions: {} Local partitions: {}", lostPartitions, partitions());
         }
     }
 
@@ -69,10 +68,10 @@ public class IgniteEventHandler implements InitializingBean {
     }
 
     private Set<Integer> partitions() {
-        final ClusterNode clusterNode = ignite.cluster().localNode();
-        final Affinity<Object> affinity = ignite.affinity(ApacheIgniteCacheConfiguration.CACHE_NAME);
-        final int[] partitions = affinity.primaryPartitions(clusterNode);
-        return IntStream.of(partitions).mapToObj(Integer::valueOf).collect(Collectors.toSet());
+      final ClusterNode clusterNode = ignite.cluster().localNode();
+      final Affinity<Object> affinity = ignite.affinity(CacheLoader.CACHE_NAME);
+      final int[] partitions = affinity.primaryPartitions(clusterNode);
+      return IntStream.of(partitions).mapToObj(Integer::valueOf).collect(Collectors.toSet());
     }
 
 
