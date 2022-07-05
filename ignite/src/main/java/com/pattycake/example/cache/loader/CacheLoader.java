@@ -81,7 +81,7 @@ public class CacheLoader {
 //        config.setAffinity()
 //        config.set
 
-        new RendezvousAffinityFunction()
+        new RendezvousAffinityFunction();
 
         return config;
     }

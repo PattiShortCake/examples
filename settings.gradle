@@ -20,6 +20,7 @@ include 'ignite'
 include 'spring-cloud-discovery'
 //include 'spring-cloud-gateway'
 //include 'spring-cloud-sleuth'
+include 'spring-kafka'
 
 //include 'webflux'
 

@@ -1,0 +1,10 @@
+spring:
+  application:
+    name: Spring Kafka Example
+
+  kafka:
+    consumer:
+      auto-offset-reset: earliest
+      max-poll-records: 1000
+    listener:
+      type: batch

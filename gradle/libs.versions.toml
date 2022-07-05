@@ -1,10 +1,14 @@
 [versions]
+awssdk = "2.17.224"
+awssdk-preview = "2.17.224-PREVIEW"
 graphql-kickstart = "12.0.0"
 ignite = "2.13.0"
 spring-boot = "2.7.0"
 
 [libraries]
-awssdk-bom = { module = "software.amazon.awssdk:bom", version = "2.17.177" }
+awssdk-bom = { module = "software.amazon.awssdk:bom", version.ref = "awssdk" }
+awssdk-aws-crt-client = { module = "software.amazon.awssdk:aws-crt-client", version.ref = "awssdk-preview" }
+awssdk-s3-transfer-manager = { module = "software.amazon.awssdk:s3-transfer-manager", version.ref = "awssdk-preview" }
 
 # GraphQL kickstart
 graphql-graphql-spring-boot-starter = { module = "com.graphql-java-kickstart:graphql-spring-boot-starter", version.ref = "graphql-kickstart" }
