@@ -9,15 +9,17 @@
         </processorPath>
         <module name="example.aws.test" />
         <module name="example.graphql.test" />
+        <module name="example.aws.main" />
         <module name="example.spring-kafka.test" />
         <module name="example.ignite.test" />
         <module name="example.graphql.intTest" />
         <module name="example.graphql.main" />
-        <module name="example.aws.main" />
+        <module name="example.template.test" />
         <module name="example.spring-cloud-discovery.main" />
         <module name="example.ignite.main" />
         <module name="example.spring-kafka.main" />
         <module name="example.spring-cloud-discovery.test" />
+        <module name="example.template.main" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel target="11">
