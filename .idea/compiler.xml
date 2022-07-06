@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile name="Gradle Imported" enabled="true">
+        <outputRelativeToContentRoot value="true" />
+        <processorPath useClasspath="false">
+          <entry name="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.projectlombok/lombok/1.18.24/13a394eed5c4f9efb2a6d956e2086f1d81e857d9/lombok-1.18.24.jar" />
+        </processorPath>
+        <module name="example.aws.test" />
+        <module name="example.graphql.test" />
+        <module name="example.spring-kafka.test" />
+        <module name="example.ignite.test" />
+        <module name="example.graphql.intTest" />
+        <module name="example.graphql.main" />
+        <module name="example.aws.main" />
+        <module name="example.spring-cloud-discovery.main" />
+        <module name="example.ignite.main" />
+        <module name="example.spring-kafka.main" />
+        <module name="example.spring-cloud-discovery.test" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel target="11">
+      <module name="example.aws.intTest" target="17" />
+      <module name="example.spring-kafka.intTest" target="17" />
+    </bytecodeTargetLevel>
+  </component>
+</project>
