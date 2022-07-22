@@ -1,0 +1,6 @@
+type SourceRecord {
+  id: String!
+  firstName: String!
+  lastName: String!
+  color: Color
+}

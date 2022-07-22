@@ -7,7 +7,7 @@ include 'graphql'
 include 'ignite'
 
 //include 'javacpp'
-//include 'javacpp-native'
+//include 'javacpp-native'\
 
 //include 'multi-project:api'
 //include 'multi-project:core'
@@ -20,6 +20,7 @@ include 'ignite'
 include 'spring-cloud-discovery'
 //include 'spring-cloud-gateway'
 //include 'spring-cloud-sleuth'
+include 'spring-graphql'
 include 'spring-kafka'
 include 'template'
 //include 'webflux'

@@ -1,0 +1,9 @@
+spring:
+  application:
+    name: Spring GraphQL Example
+  graphql:
+    schema:
+      printer:
+        enabled: true
+    graphiql:
+      enabled: on

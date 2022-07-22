@@ -1,0 +1,9 @@
+query AllProfiles {
+    profiles {
+        sourceRecords {
+            firstName
+            lastName
+            color
+        }
+    }
+}

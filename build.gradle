@@ -9,6 +9,7 @@ version '1.0-SNAPSHOT'
 subprojects {
     if (it.name != 'javacpp-native') {
         apply plugin: 'java-library'
+        apply plugin: 'java-test-fixtures'
         apply plugin: 'com.diffplug.eclipse.apt'
         apply plugin: 'io.freefair.lombok'
 
