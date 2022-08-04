@@ -1,0 +1,8 @@
+query PeopleByLastName($lastName: String!) {
+    peopleByLastName(lastName: $lastName) {
+        id
+        firstName
+        lastName
+        favoriteColor
+    }
+}

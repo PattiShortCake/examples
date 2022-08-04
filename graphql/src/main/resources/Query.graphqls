@@ -1,5 +1,22 @@
 type Query {
-  profiles: [Profile!]
-  findByFirstName(firstName: String): [Profile]
-  findByLastName(lastName: String): [Profile]
+  #  people: PersonConnection @connection(for: "Person")
+  people: PersonConnection
+  peopleByFirstName(firstName: String): [Person!]
+  peopleByLastName(lastName: String): [Person!]
+
+}
+
+type PersonConnection {
+  edges: [PersonEdge]
+  pageInfo: PageInfo
+}
+
+type PersonEdge {
+  cursor: String
+  node: Person
+}
+
+type PageInfo {
+  hasPreviousPage: Boolean!
+  hasNextPage: Boolean!
 }

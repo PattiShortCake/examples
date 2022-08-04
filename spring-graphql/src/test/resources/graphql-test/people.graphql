@@ -1,4 +1,4 @@
-query{
+query AllPeople {
   people {
     edges {
       cursor

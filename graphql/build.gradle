@@ -2,32 +2,6 @@ plugins {
     alias(libs.plugins.lombok)
 }
 
-sourceSets {
-    intTest {
-        compileClasspath += sourceSets.main.output
-        runtimeClasspath += sourceSets.main.output
-    }
-}
-
-configurations {
-    intTestImplementation.extendsFrom implementation
-    intTestRuntimeOnly.extendsFrom runtimeOnly
-}
-
-task integrationTest(type: Test) {
-    description = 'Runs integration tests.'
-    group = 'verification'
-
-    testClassesDirs = sourceSets.intTest.output.classesDirs
-    classpath = sourceSets.intTest.runtimeClasspath
-    shouldRunAfter test
-
-    useJUnitPlatform()
-
-}
-
-check.dependsOn integrationTest
-
 dependencies {
     implementation("org.springframework.boot:spring-boot-starter-web")
 
@@ -35,9 +9,6 @@ dependencies {
 
     testImplementation("org.springframework.boot:spring-boot-starter-test")
     testImplementation(libs.graphql.graphql.spring.boot.starter.test)
-
-    intTestImplementation("org.springframework.boot:spring-boot-starter-test")
-    intTestImplementation(libs.graphql.graphql.spring.boot.starter.test)
 }
 
 test {

@@ -1,9 +1,0 @@
-query ProfilesByLastName($lastName: String!) {
-    findByLastName(lastName: $lastName) {
-        sourceRecords {
-            firstName
-            lastName
-            color
-        }
-    }
-}

@@ -19,7 +19,6 @@
         <module name="example.spring-kafka.test" />
         <module name="example.spring-kafka.testFixtures" />
         <module name="example.ignite.test" />
-        <module name="example.graphql.intTest" />
         <module name="example.graphql.main" />
         <module name="example.spring-cloud-discovery.testFixtures" />
         <module name="example.template.test" />
@@ -33,6 +32,7 @@
     </annotationProcessing>
     <bytecodeTargetLevel target="11">
       <module name="example.aws.intTest" target="17" />
+      <module name="example.graphql.intTest" target="17" />
       <module name="example.spring-graphql.intTest" target="17" />
       <module name="example.spring-kafka.intTest" target="17" />
     </bytecodeTargetLevel>

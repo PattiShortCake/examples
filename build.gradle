@@ -19,10 +19,8 @@ subprojects {
                 allowInsecureProtocol true
             }
             mavenCentral()
-            // google()
         }
         sourceCompatibility = JavaVersion.VERSION_17
-//    targetCompatibility = 11
 
         dependencies {
             implementation platform(libs.ignite.bom)
@@ -36,9 +34,6 @@ subprojects {
             implementation platform(libs.awssdk.bom)
         }
 
-//        compileJava {
-//            options.annotationProcessorGeneratedSourcesDirectory = file("${projectDir}/src/main/generated")
-//        }
     }
 
 }

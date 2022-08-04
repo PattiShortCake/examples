@@ -20,10 +20,10 @@ public class QueryTest {
   private GraphQLTestTemplate graphQLTestTemplate;
 
   @Test
-  void profiles() throws IOException {
+  void people() throws IOException {
     final GraphQLResponse response = graphQLTestTemplate.postForResource("get-with-post.graphql");
     assertNotNull(response);
     assertTrue(response.isOk());
-    assertEquals("SpongeBob", response.get("$.data.profiles[0].sourceRecords[0].firstName"));
+    assertEquals("SpongeBob", response.get("$.data.people.edges[0].node.firstName"));
   }
 }

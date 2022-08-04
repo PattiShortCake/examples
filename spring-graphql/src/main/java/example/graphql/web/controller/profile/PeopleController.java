@@ -1,19 +1,22 @@
-package example.graphql.web.controller.graphql;
+package example.graphql.web.controller.profile;
 
-import example.graphql.web.controller.graphql.dto.Color;
-import example.graphql.web.controller.graphql.dto.Person;
-import graphql.kickstart.tools.GraphQLQueryResolver;
+import example.graphql.web.controller.profile.dto.Color;
+import example.graphql.web.controller.profile.dto.Person;
 import graphql.relay.Connection;
 import graphql.relay.SimpleListConnection;
 import graphql.schema.DataFetchingEnvironment;
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
+import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
-import org.springframework.stereotype.Component;
+import org.springframework.graphql.data.method.annotation.Argument;
+import org.springframework.graphql.data.method.annotation.QueryMapping;
+import org.springframework.stereotype.Controller;
 
-@Component
-public class Query implements GraphQLQueryResolver {
+@Controller
+@Slf4j
+public class PeopleController {
 
   public static final Person PATRICK = Person.builder().id("2").firstName("Patrick")
       .lastName("StarFish").favoriteColor(Color.PINK)
@@ -28,6 +31,7 @@ public class Query implements GraphQLQueryResolver {
       .friend(SQUIDWARD)
       .build();
 
+  @QueryMapping
   public Connection<Person> people(final DataFetchingEnvironment dataFetchingEnvironment) {
     final List<Person> people = buildPeople().collect(Collectors.toList());
     return new SimpleListConnection<>(people).get(dataFetchingEnvironment);
@@ -41,15 +45,18 @@ public class Query implements GraphQLQueryResolver {
     );
   }
 
-  public List<Person> peopleByFirstName(final String firstName) {
+  @QueryMapping
+  public List<Person> peopleByFirstName(@Argument final String firstName) {
     return buildPeople()
         .filter(p -> StringUtils.equalsAnyIgnoreCase(p.getFirstName(), firstName))
         .collect(Collectors.toList());
   }
 
-  public List<Person> peopleByLastName(final String lastName) {
+  @QueryMapping
+  public List<Person> peopleByLastName(@Argument final String lastName) {
     return buildPeople()
         .filter(p -> StringUtils.equalsAnyIgnoreCase(p.getLastName(), lastName))
         .collect(Collectors.toList());
   }
+
 }

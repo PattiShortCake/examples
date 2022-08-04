@@ -10,7 +10,7 @@ import org.springframework.test.web.servlet.client.MockMvcWebTestClient;
 import org.springframework.web.context.WebApplicationContext;
 
 @SpringBootTest
-class ProfileControllerTest {
+class PeopleControllerTest {
 
   @Autowired
   private WebApplicationContext context;
@@ -29,30 +29,30 @@ class ProfileControllerTest {
   }
 
   @Test
-  void profiles() {
-    tester.documentName("profile")
+  void people() {
+    tester.documentName("people")
         .execute()
-        .path("profiles[*].sourceRecords[*].firstName")
+        .path("people.edges[*].node.firstName")
         .entityList(String.class)
         .contains("SpongeBob");
   }
 
   @Test
-  void profiles_givenPatrick_expectStarfish() {
-    tester.documentName("profile-by-first-name")
+  void people_givenPatrick_expectStarfish() {
+    tester.documentName("people-by-first-name")
         .variable("firstName", "Patrick")
         .execute()
-        .path("findByFirstName[*].sourceRecords[*].lastName")
+        .path("peopleByFirstName[*].lastName")
         .entityList(String.class)
         .contains("StarFish");
   }
 
   @Test
-  void profiles_givenStarfish_expectPatrick() {
-    tester.documentName("profile-by-last-name")
+  void people_givenStarfish_expectPatrick() {
+    tester.documentName("people-by-last-name")
         .variable("lastName", "Starfish")
         .execute()
-        .path("findByLastName[*].sourceRecords[*].firstName")
+        .path("peopleByLastName[*].firstName")
         .entityList(String.class)
         .contains("Patrick");
   }
