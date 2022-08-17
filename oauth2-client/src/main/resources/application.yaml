@@ -1,0 +1,12 @@
+server:
+  port: 8080
+spring:
+  application:
+    name: oauth2-client
+  security:
+    oauth2:
+      client:
+        registration:
+          google:
+#            client-id:
+#            client-secret:

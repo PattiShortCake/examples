@@ -13,6 +13,7 @@ include 'ignite'
 //include 'multi-project:core'
 //include 'multi-project:project'
 
+include 'oauth2-client'
 //include 'oauth2-resource-server'
 //include 'oauth2-server'
 

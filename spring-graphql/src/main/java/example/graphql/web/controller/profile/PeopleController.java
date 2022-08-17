@@ -6,6 +6,7 @@ import graphql.relay.Connection;
 import graphql.relay.SimpleListConnection;
 import graphql.schema.DataFetchingEnvironment;
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 import lombok.extern.slf4j.Slf4j;
@@ -32,7 +33,10 @@ public class PeopleController {
       .build();
 
   @QueryMapping
-  public Connection<Person> people(final DataFetchingEnvironment dataFetchingEnvironment) {
+  public Connection<Person> people(
+      @Argument final Optional<String> after,
+      @Argument final Optional<Integer> first,
+      final DataFetchingEnvironment dataFetchingEnvironment) {
     final List<Person> people = buildPeople().collect(Collectors.toList());
     return new SimpleListConnection<>(people).get(dataFetchingEnvironment);
   }

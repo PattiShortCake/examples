@@ -12,13 +12,16 @@
         <module name="example.graphql.testFixtures" />
         <module name="example.template.testFixtures" />
         <module name="example.aws.testFixtures" />
+        <module name="example.oauth2-client.main" />
         <module name="example.spring-graphql.test" />
         <module name="example.aws.main" />
+        <module name="example.oauth2-client.test" />
         <module name="example.spring-graphql.main" />
         <module name="example.ignite.testFixtures" />
         <module name="example.spring-kafka.test" />
         <module name="example.spring-kafka.testFixtures" />
         <module name="example.ignite.test" />
+        <module name="example.oauth2-client.testFixtures" />
         <module name="example.graphql.main" />
         <module name="example.spring-cloud-discovery.testFixtures" />
         <module name="example.template.test" />
@@ -33,6 +36,10 @@
     <bytecodeTargetLevel target="11">
       <module name="example.aws.intTest" target="17" />
       <module name="example.graphql.intTest" target="17" />
+      <module name="example.oauth2" target="17" />
+      <module name="example.oauth2.main" target="17" />
+      <module name="example.oauth2.test" target="17" />
+      <module name="example.oauth2.testFixtures" target="17" />
       <module name="example.spring-graphql.intTest" target="17" />
       <module name="example.spring-kafka.intTest" target="17" />
     </bytecodeTargetLevel>

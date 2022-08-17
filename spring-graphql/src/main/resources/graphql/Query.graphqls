@@ -1,27 +1,10 @@
-directive @connection(for : String!) on FIELD_DEFINITION
-
-#type PersonRelay @connection(for: "Person") {
-#}
+directive @connection on FIELD_DEFINITION
+directive @connectionForward on FIELD_DEFINITION
+directive @connectionBackward on FIELD_DEFINITION
 
 type Query {
   greeting: String!
-  people: Person @connection(for: "Person")
-  #  people: PersonConnection
-  peopleByFirstName(firstName: String): [Person!]
-  peopleByLastName(lastName: String): [Person!]
+  people: Person @connection
+  peopleByFirstName(firstName: String) : Person @connection
+  peopleByLastName(lastName: String): Person @connection
 }
-
-#type PersonConnection {
-#  edges: [PersonEdge]
-#  pageInfo: PageInfo
-#}
-#
-#type PersonEdge {
-#  cursor: String
-#  node: Person
-#}
-#
-#type PageInfo {
-#  hasPreviousPage: Boolean!
-#  hasNextPage: Boolean!
-#}

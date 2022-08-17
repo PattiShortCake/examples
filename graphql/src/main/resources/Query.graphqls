@@ -1,22 +1,22 @@
 type Query {
-  #  people: PersonConnection @connection(for: "Person")
-  people: PersonConnection
-  peopleByFirstName(firstName: String): [Person!]
-  peopleByLastName(lastName: String): [Person!]
+    people: PersonConnection @connection(for: "Person")
+    #people: PersonConnection
+    peopleByFirstName(firstName: String): [Person!]
+    peopleByLastName(lastName: String): [Person!]
 
 }
 
-type PersonConnection {
-  edges: [PersonEdge]
-  pageInfo: PageInfo
-}
+#type PersonConnection {
+#  edges: [PersonEdge]
+#  pageInfo: PageInfo
+#}
 
 type PersonEdge {
-  cursor: String
-  node: Person
+    cursor: String
+    node: Person
 }
 
 type PageInfo {
-  hasPreviousPage: Boolean!
-  hasNextPage: Boolean!
+    hasPreviousPage: Boolean!
+    hasNextPage: Boolean!
 }
