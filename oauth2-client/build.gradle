@@ -4,5 +4,9 @@ dependencies {
     implementation("org.springframework.security:spring-security-oauth2-client")
     implementation("org.springframework.security:spring-security-oauth2-jose")
 
+    implementation(libs.javafaker) {
+        exclude group: "org.yaml", module: "snakeyaml"
+    }
+
     testImplementation("org.springframework.boot:spring-boot-starter-test")
 }

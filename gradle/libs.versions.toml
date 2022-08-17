@@ -21,6 +21,7 @@ h2 = { module = "com.h2database:h2", version = { strictly = "1.4.197" } }
 
 ignite-bom = { module = "org.apache.ignite:ignite-bom", version = "2.13.0" }
 
+javafaker = { module = "com.github.javafaker:javafaker", version = "1.0.2" }
 kryo5 = { module = "com.esotericsoftware.kryo:kryo5", version = "5.2.0" }
 
 spring-boot-dependencies = { module = "org.springframework.boot:spring-boot-dependencies", version.ref = "spring-boot" }
