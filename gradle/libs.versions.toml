@@ -1,7 +1,7 @@
 [versions]
-awssdk = "2.17.224"
-awssdk-preview = "2.17.224-PREVIEW"
-graphql-kickstart = "12.0.0"
+awssdk = "2.17.252"
+awssdk-preview = "2.17.252-PREVIEW"
+graphql-kickstart = "13.0.1"
 ignite = "2.13.0"
 spring-boot = "2.7.2"
 
@@ -15,7 +15,6 @@ graphql-graphql-spring-boot-starter = { module = "com.graphql-java-kickstart:gra
 graphql-graphiql-spring-boot-starter = { module = "com.graphql-java-kickstart:graphiql-spring-boot-starter", version = "11.1.0" }
 graphql-voyager-spring-boot-starter = { module = "com.graphql-java-kickstart:voyager-spring-boot-starter", version = "11.1.0" }
 graphql-graphql-spring-boot-starter-test = { module = "com.graphql-java-kickstart:graphql-spring-boot-starter-test", version.ref = "graphql-kickstart" }
-graphql-tools = { module = "com.graphql-java-kickstart:graphql-java-tools", version = "12.0.2" }
 
 # Must downgrade H2 because ignite-indexing:2.10.0 uses unsupported DB connection parameter, MULTI_THREADED=1
 h2 = { module = "com.h2database:h2", version = { strictly = "1.4.197" } }
@@ -28,7 +27,7 @@ spring-boot-dependencies = { module = "org.springframework.boot:spring-boot-depe
 spring-cloud-dependencies = { module = "org.springframework.cloud:spring-cloud-dependencies", version = "2021.0.3" }
 
 [bundles]
-graphql-kickstart = ["graphql-graphql-spring-boot-starter", "graphql-graphiql-spring-boot-starter", "graphql-voyager-spring-boot-starter", "graphql-tools"]
+graphql-kickstart = ["graphql-graphql-spring-boot-starter", "graphql-graphiql-spring-boot-starter", "graphql-voyager-spring-boot-starter"]
 
 [plugins]
 eclipse-apt = { id = "com.diffplug.eclipse.apt", version = "3.36.2" }
