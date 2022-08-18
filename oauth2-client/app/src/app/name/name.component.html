@@ -1,27 +1,25 @@
 <h3>Names!!!</h3>
 
-<p>name works!</p>
-
-<table [dataSource]="names" mat-table>
+<mat-table [dataSource]="names">
   <!-- ID Column -->
   <ng-container matColumnDef="id">
-    <th *matHeaderCellDef mat-header-cell>ID</th>
-    <td *matCellDef="let element" mat-cell> {{element.id}} </td>
+    <mat-header-cell *matHeaderCellDef>ID</mat-header-cell>
+    <mat-cell *matCellDef="let element"> {{element.id}} </mat-cell>
   </ng-container>
 
   <!-- Name Column -->
   <ng-container matColumnDef="first-name">
-    <th *matHeaderCellDef mat-header-cell> First Name</th>
-    <td *matCellDef="let element" mat-cell> {{element.firstName}} </td>
+    <mat-header-cell *matHeaderCellDef> First Name</mat-header-cell>
+    <mat-cell *matCellDef="let element"> {{element.firstName}} </mat-cell>
   </ng-container>
 
   <!-- Name Column -->
   <ng-container matColumnDef="last-name">
-    <th *matHeaderCellDef mat-header-cell> Last Name</th>
-    <td *matCellDef="let element" mat-cell> {{element.lastName}} </td>
+    <mat-header-cell *matHeaderCellDef> Last Name</mat-header-cell>
+    <mat-cell *matCellDef="let element"> {{element.lastName}} </mat-cell>
   </ng-container>
 
-  <tr *matHeaderRowDef="displayedColumns" mat-header-row></tr>
-  <tr *matRowDef="let row; columns: displayedColumns;" mat-row></tr>
-</table>
+  <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+  <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+</mat-table>
 
