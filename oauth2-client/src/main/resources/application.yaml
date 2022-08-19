@@ -3,24 +3,29 @@ server:
 spring:
   application:
     name: oauth2-client
-  security:
-    oauth2:
-      client:
-        registration:
-          okta:
-            scope:
-              - openid
-              - email
-          #            client-id:
-          #            client-secret:
-          #redirect-uri: http://localhost:8080/login/oauth2/code/
-        provider:
-          okta:
-            issuer-uri: https://dev-2322327.okta.com
-      resourceserver:
-        jwt:
-          jwk-set-uri: https://dev-2322327.okta.com/oauth2/v1/keys
-          issuer-uri: https://dev-2322327.okta.com
+  graphql:
+    schema:
+      printer:
+        enabled: true
+    graphiql:
+      enabled: on
+#  security:
+#    oauth2:
+#      client:
+#        registration:
+#          okta:
+#            scope:
+#              - openid
+#              - email
+#        #            client-id:
+#        #            client-secret:
+#        #redirect-uri: http://localhost:8080/login/oauth2/code/
+#        provider:
+#          okta:
+#            issuer-uri: https://dev-2322327.okta.com
+#      resourceserver:
+#        jwt:
+#          issuer-uri: https://dev-2322327.okta.com
 logging:
   level:
     root: debug
