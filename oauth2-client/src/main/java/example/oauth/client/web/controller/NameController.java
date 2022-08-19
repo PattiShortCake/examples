@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("name")
+@CrossOrigin
 class NameController {
 
   @GetMapping

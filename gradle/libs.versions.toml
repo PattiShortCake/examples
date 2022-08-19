@@ -3,7 +3,7 @@ awssdk = "2.17.252"
 awssdk-preview = "2.17.252-PREVIEW"
 graphql-kickstart = "13.0.1"
 ignite = "2.13.0"
-spring-boot = "2.7.2"
+spring-boot = "2.7.3"
 
 [libraries]
 awssdk-bom = { module = "software.amazon.awssdk:bom", version.ref = "awssdk" }

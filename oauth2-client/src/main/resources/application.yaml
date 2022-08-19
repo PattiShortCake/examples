@@ -7,6 +7,20 @@ spring:
     oauth2:
       client:
         registration:
-          google:
-#            client-id:
-#            client-secret:
+          okta:
+            scope:
+              - openid
+              - email
+          #            client-id:
+          #            client-secret:
+          #redirect-uri: http://localhost:8080/login/oauth2/code/
+        provider:
+          okta:
+            issuer-uri: https://dev-2322327.okta.com
+      resourceserver:
+        jwt:
+          jwk-set-uri: https://dev-2322327.okta.com/oauth2/v1/keys
+          issuer-uri: https://dev-2322327.okta.com
+logging:
+  level:
+    root: debug

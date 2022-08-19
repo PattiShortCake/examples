@@ -8,11 +8,16 @@ import {NameComponent} from './name/name.component';
 import {MatIconModule} from "@angular/material/icon";
 import {MatTableModule} from "@angular/material/table";
 import {HttpClientModule} from "@angular/common/http";
+import {AuthConfigModule} from './auth/auth-config.module';
+import {HomeComponent} from './home/home.component';
+import {UnauthorizedComponent} from './unauthorized/unauthorized.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    NameComponent
+    NameComponent,
+    HomeComponent,
+    UnauthorizedComponent
   ],
   imports: [
     BrowserModule,
@@ -20,9 +25,10 @@ import {HttpClientModule} from "@angular/common/http";
     BrowserAnimationsModule,
     HttpClientModule,
     MatIconModule,
-    MatTableModule
+    MatTableModule,
+    AuthConfigModule,
   ],
-  providers: [],
+  providers: [NameComponent],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
