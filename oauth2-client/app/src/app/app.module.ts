@@ -11,6 +11,7 @@ import {HttpClientModule} from "@angular/common/http";
 import {AuthConfigModule} from './auth/auth-config.module';
 import {HomeComponent} from './home/home.component';
 import {UnauthorizedComponent} from './unauthorized/unauthorized.component';
+import {GraphQLModule} from './graphql.module';
 
 @NgModule({
   declarations: [
@@ -27,6 +28,7 @@ import {UnauthorizedComponent} from './unauthorized/unauthorized.component';
     MatIconModule,
     MatTableModule,
     AuthConfigModule,
+    GraphQLModule,
   ],
   providers: [NameComponent],
   bootstrap: [AppComponent]
