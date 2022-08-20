@@ -1,0 +1,7 @@
+query Names() {
+  names() {
+    id
+    firstName
+    lastName
+  }
+}
