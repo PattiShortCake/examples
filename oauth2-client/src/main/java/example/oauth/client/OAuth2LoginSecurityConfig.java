@@ -49,13 +49,4 @@ public class OAuth2LoginSecurityConfig {
     return source;
   }
 
-//  @Bean
-//  public WebMvcConfigurer corsConfigurer() {
-//    return new WebMvcConfigurer() {
-//      @Override
-//      public void addCorsMappings(final CorsRegistry registry) {
-//        registry.addMapping("**").allowedOrigins("*");
-//      }
-//    };
-//  }
 }
