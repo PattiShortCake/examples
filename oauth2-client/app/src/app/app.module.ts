@@ -12,13 +12,15 @@ import {AuthConfigModule} from './auth/auth-config.module';
 import {HomeComponent} from './home/home.component';
 import {UnauthorizedComponent} from './unauthorized/unauthorized.component';
 import {GraphQLModule} from './graphql.module';
+import {NameGraphqlComponent} from './name-graphql/name-graphql.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     NameComponent,
     HomeComponent,
-    UnauthorizedComponent
+    UnauthorizedComponent,
+    NameGraphqlComponent
   ],
   imports: [
     BrowserModule,
