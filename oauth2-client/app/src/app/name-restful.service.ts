@@ -18,6 +18,19 @@ export class NameRestfulService {
   }
 
   getNames(): Observable<Name[]> {
+    this.oidcSecurityService.checkAuth().subscribe(({
+                                                      isAuthenticated,
+                                                      userData,
+                                                      accessToken,
+                                                      idToken
+                                                    }) => {
+      console.log("isAuthenticated", isAuthenticated)
+      console.log("userData", userData)
+      console.log("accessToken", accessToken)
+      console.log("idToken", idToken)
+      /*...*/
+    });
+
     return this.oidcSecurityService.getIdToken()
     .pipe(
       map((token) =>
