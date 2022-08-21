@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {MatTableDataSource} from "@angular/material/table";
-import {Name} from "../name";
 import {NameGraphqlService} from "../name-graphql.service";
+import {Name} from "../../generated/graphql";
 
 @Component({
   selector: 'app-name-graphql',
@@ -21,8 +21,7 @@ export class NameGraphqlComponent implements OnInit {
 
   ngOnInit(): void {
     this.nameGraphqlService.getData().subscribe(result => {
-      let nameResults = result.data.names;
-        this.names = new MatTableDataSource<Name>(nameResults)
+      this.names = new MatTableDataSource<Name>(result)
       }
     );
   }

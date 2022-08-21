@@ -1,5 +1,7 @@
 overwrite: true
 schema: "../src/main/resources/graphql/"
+config:
+  addExplicitOverride: true
 documents: "../src/main/resources/graphql/*.graphql"
 generates:
   src/generated/graphql.ts:

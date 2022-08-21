@@ -1,19 +1,8 @@
 import {Injectable} from '@angular/core';
-import {Apollo, ApolloBase, gql} from "apollo-angular";
-import {Observable} from "rxjs";
-import {Name} from "./name";
-import type {ApolloQueryResult} from "@apollo/client/core";
+import {Apollo, ApolloBase} from "apollo-angular";
+import {map, Observable} from "rxjs";
 import {OidcSecurityService} from "angular-auth-oidc-client";
-
-const NAME_QUERY = gql`
-  {
-    names {
-      id
-      firstName
-      lastName
-    }
-  }
-`;
+import {NamesGQL, NamesQuery} from "../generated/graphql";
 
 @Injectable({
   providedIn: 'root'
@@ -24,12 +13,13 @@ export class NameGraphqlService {
 
   constructor(
     private apolloProvider: Apollo,
+    private namesGQL: NamesGQL,
     private oidcSecurityService: OidcSecurityService
   ) {
     this.apollo = this.apolloProvider
   }
 
-  getData(): Observable<ApolloQueryResult<NameQueryResult>> {
+  getData(): Observable<NamesQuery['names']> {
     this.oidcSecurityService.checkAuth().subscribe(({
                                                       isAuthenticated,
                                                       userData,
@@ -49,13 +39,8 @@ export class NameGraphqlService {
       console.log("localStorage[token].set", token)
     });
 
-    return this.apollo
-    .watchQuery<NameQueryResult>({query: NAME_QUERY})
-      .valueChanges
+    return this.namesGQL.watch()
+    .valueChanges.pipe(map(result => result.data.names))
       ;
   }
-}
-
-export interface NameQueryResult {
-  names: Name[]
 }
