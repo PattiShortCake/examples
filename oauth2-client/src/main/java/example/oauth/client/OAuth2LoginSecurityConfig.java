@@ -1,5 +1,6 @@
 package example.oauth.client;
 
+import org.springframework.boot.autoconfigure.security.oauth2.resource.OAuth2ResourceServerProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.Customizer;
@@ -10,6 +11,7 @@ import org.springframework.security.oauth2.client.oidc.authentication.OidcIdToke
 import org.springframework.security.oauth2.client.registration.ClientRegistration;
 import org.springframework.security.oauth2.jose.jws.SignatureAlgorithm;
 import org.springframework.security.oauth2.jwt.JwtDecoderFactory;
+import org.springframework.security.oauth2.server.resource.introspection.SpringOpaqueTokenIntrospector;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.CorsConfigurationSource;
@@ -26,6 +28,7 @@ public class OAuth2LoginSecurityConfig {
         .authorizeHttpRequests(authorize -> authorize
             .anyRequest().authenticated()
         )
+
         .oauth2ResourceServer(OAuth2ResourceServerConfigurer::opaqueToken)
 
         .oauth2Login(
@@ -64,6 +67,15 @@ public class OAuth2LoginSecurityConfig {
     config.setAllowCredentials(true);
     source.registerCorsConfiguration("/**", config);
     return source;
+  }
+
+  @Bean
+  public SpringOpaqueTokenIntrospector opaqueTokenIntrospector(
+      final OAuth2ResourceServerProperties properties) {
+    final OAuth2ResourceServerProperties.Opaquetoken opaqueToken = properties.getOpaquetoken();
+    return new SpringOpaqueTokenIntrospector(opaqueToken.getIntrospectionUri(),
+        opaqueToken.getClientId(),
+        opaqueToken.getClientSecret());
   }
 
   @Bean
