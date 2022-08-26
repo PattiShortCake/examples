@@ -22,15 +22,17 @@ spring:
             scope:
               - openid
               - email
-              #            client-id:
-              #            client-secret:
-              #redirect-uri: http://localhost:8080/login/oauth2/code/
+            #client-id:
+            #client-secret:
         provider:
           okta:
             issuer-uri: https://dev-2322327.okta.com
       resourceserver:
-        jwt:
-          issuer-uri: https://dev-2322327.okta.com
+        opaquetoken:
+          introspection-uri: https://dev-2322327.okta.com/oauth2/v1/introspect
+          #client-id:
+          #client-secret:
+
 logging:
   level:
     root: debug

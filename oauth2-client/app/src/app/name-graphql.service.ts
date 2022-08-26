@@ -33,7 +33,7 @@ export class NameGraphqlService {
       /*...*/
     });
 
-    this.oidcSecurityService.getIdToken()
+    this.oidcSecurityService.getAccessToken()
     .subscribe(token => {
       localStorage.setItem('token', token);
       console.log("localStorage[token].set", token)

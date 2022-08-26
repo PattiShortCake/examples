@@ -5,6 +5,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.Customizer;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
+import org.springframework.security.config.annotation.web.configurers.oauth2.server.resource.OAuth2ResourceServerConfigurer;
 import org.springframework.security.oauth2.client.oidc.authentication.OidcIdTokenDecoderFactory;
 import org.springframework.security.oauth2.client.registration.ClientRegistration;
 import org.springframework.security.oauth2.jose.jws.SignatureAlgorithm;
@@ -21,19 +22,14 @@ public class OAuth2LoginSecurityConfig {
   @Bean
   public SecurityFilterChain filterChain(final HttpSecurity http) throws Exception {
     http
-//        .antMatcher("/graphql")
-//        .antMatcher("/graphql**")
-//        .antMatcher("/graphql/**")
-//        .anonymous()
-//
-//        .and()
 
         .authorizeHttpRequests(authorize -> authorize
             .anyRequest().authenticated()
         )
-        .oauth2ResourceServer(c -> c.jwt())
+        .oauth2ResourceServer(OAuth2ResourceServerConfigurer::opaqueToken)
 
-        .oauth2Login(Customizer.withDefaults()
+        .oauth2Login(
+            Customizer.withDefaults()
 //            .userInfoEndpoint(userInfo -> userInfo
 //                .userAuthoritiesMapper(userAuthoritiesMapper())
 //
@@ -48,6 +44,8 @@ public class OAuth2LoginSecurityConfig {
 //            )
         )
 
+//        .oauth2Client(Customizer.withDefaults())
+
         .cors(cors -> cors.configurationSource(corsConfigurationSource()))
 
         .csrf(c -> c.disable())
@@ -59,9 +57,9 @@ public class OAuth2LoginSecurityConfig {
   private CorsConfigurationSource corsConfigurationSource() {
     final UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
     final CorsConfiguration config = new CorsConfiguration();
-    config.addAllowedHeader("*");
-    config.addAllowedMethod("*");
-    config.addAllowedOriginPattern("*");
+    config.addAllowedHeader(CorsConfiguration.ALL);
+    config.addAllowedMethod(CorsConfiguration.ALL);
+    config.addAllowedOriginPattern(CorsConfiguration.ALL);
 
     config.setAllowCredentials(true);
     source.registerCorsConfiguration("/**", config);
@@ -75,4 +73,5 @@ public class OAuth2LoginSecurityConfig {
     idTokenDecoderFactory.setJwsAlgorithmResolver(clientRegistration -> SignatureAlgorithm.RS256);
     return idTokenDecoderFactory;
   }
+
 }
