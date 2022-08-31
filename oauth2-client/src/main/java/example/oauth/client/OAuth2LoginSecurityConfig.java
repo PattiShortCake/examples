@@ -7,19 +7,14 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.autoconfigure.security.oauth2.resource.OAuth2ResourceServerProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.security.config.Customizer;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configurers.oauth2.server.resource.OAuth2ResourceServerConfigurer;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
-import org.springframework.security.oauth2.client.oidc.authentication.OidcIdTokenDecoderFactory;
-import org.springframework.security.oauth2.client.registration.ClientRegistration;
 import org.springframework.security.oauth2.core.DefaultOAuth2AuthenticatedPrincipal;
 import org.springframework.security.oauth2.core.OAuth2AuthenticatedPrincipal;
 import org.springframework.security.oauth2.core.OAuth2TokenIntrospectionClaimNames;
-import org.springframework.security.oauth2.jose.jws.SignatureAlgorithm;
-import org.springframework.security.oauth2.jwt.JwtDecoderFactory;
 import org.springframework.security.oauth2.server.resource.introspection.OpaqueTokenIntrospector;
 import org.springframework.security.oauth2.server.resource.introspection.SpringOpaqueTokenIntrospector;
 import org.springframework.security.web.SecurityFilterChain;
@@ -41,22 +36,23 @@ public class OAuth2LoginSecurityConfig {
         )
 
         .oauth2ResourceServer(OAuth2ResourceServerConfigurer::opaqueToken)
+//        .oauth2ResourceServer(OAuth2ResourceServerConfigurer::jwt)
 
-        .oauth2Login(
-            Customizer.withDefaults()
+//        .oauth2Login(
+//            Customizer.withDefaults()
 //            .userInfoEndpoint(userInfo -> userInfo
 //                .userAuthoritiesMapper(userAuthoritiesMapper())
 //
 //            )
-            // For OAuth 2.0 UserService
+        // For OAuth 2.0 UserService
 //            .userInfoEndpoint(userInfo -> userInfo
 //                .userService(this.oauth2UserService()
 //            )
-            // For OpenID Connect 1.0 UserService
+        // For OpenID Connect 1.0 UserService
 //            .userInfoEndpoint(userInfo -> userInfo
 //                .oidcUserService(this.oidcUserService()
 //            )
-        )
+//        )
 
 //        .oauth2Client(Customizer.withDefaults())
 
@@ -80,21 +76,21 @@ public class OAuth2LoginSecurityConfig {
     return source;
   }
 
-  @Bean
+  //  @Bean
   public CustomAuthoritiesOpaqueTokenIntrospector opaqueTokenIntrospector(
       final OAuth2ResourceServerProperties properties) {
     return new CustomAuthoritiesOpaqueTokenIntrospector(properties);
   }
 
-  @Bean
-  public JwtDecoderFactory<ClientRegistration> idTokenDecoderFactory() {
-    // Changing ID Token Signature Verification
-    final OidcIdTokenDecoderFactory idTokenDecoderFactory = new OidcIdTokenDecoderFactory();
-    idTokenDecoderFactory.setJwsAlgorithmResolver(clientRegistration -> SignatureAlgorithm.RS256);
-    return idTokenDecoderFactory;
-  }
+//  @Bean
+//  public JwtDecoderFactory<ClientRegistration> idTokenDecoderFactory() {
+//    // Changing ID Token Signature Verification
+//    final OidcIdTokenDecoderFactory idTokenDecoderFactory = new OidcIdTokenDecoderFactory();
+//    idTokenDecoderFactory.setJwsAlgorithmResolver(clientRegistration -> SignatureAlgorithm.RS256);
+//    return idTokenDecoderFactory;
+//  }
 
-  public class CustomAuthoritiesOpaqueTokenIntrospector implements OpaqueTokenIntrospector {
+  private static class CustomAuthoritiesOpaqueTokenIntrospector implements OpaqueTokenIntrospector {
 
     private final OpaqueTokenIntrospector delegate;
 

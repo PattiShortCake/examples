@@ -1,0 +1,10 @@
+spring:
+  security:
+    oauth2:
+      resourceserver:
+        opaquetoken:
+          introspection-uri: https://dev-2322327.okta.com/oauth2/v1/introspect
+        #client-id:
+        #client-secret:
+#        jwt:
+#          issuer-uri: https://dev-2322327.okta.com

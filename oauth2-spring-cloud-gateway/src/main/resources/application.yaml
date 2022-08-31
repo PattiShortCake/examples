@@ -1,0 +1,36 @@
+server:
+  port: 8080
+  forward-headers-strategy: framework
+spring:
+  application:
+    name: Spring Cloud Gateway w/ OIDC Example
+  cloud:
+    gateway:
+      default-filters:
+        - TokenRelay=
+        - DedupeResponseHeader=Access-Control-Allow-Credentials Access-Control-Allow-Origin
+      globalcors:
+        cors-configurations:
+          '[/**]':
+            allowedOrigins: "*"
+            allowedMethods: "*"
+            allowedHeaders: "*"
+        add-to-simple-url-handler-mapping: true
+      routes:
+        - id: graphql_route
+          uri: http://localhost:8081/graphql
+          predicates:
+            - Path=/graphql/**
+        - id: graphiql_route
+          uri: http://localhost:8081/graphiql
+          predicates:
+            - Path=/graphiql/**
+        - id: name_route
+          uri: http://localhost:8081/name
+          predicates:
+            - Path=/graphiql/**
+
+logging:
+  level:
+    org.springframework: debug
+    org.springframework.cloud.gateway: trace

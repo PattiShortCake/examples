@@ -1,0 +1,18 @@
+spring:
+  security:
+    oauth2:
+      client:
+        registration:
+          okta:
+            scope:
+              - openid
+              - email
+            #client-id:
+            #client-secret:
+        provider:
+          okta:
+            issuer-uri: https://dev-2322327.okta.com
+logging:
+  level:
+    org.springframework: debug
+    org.springframework.cloud.gateway: trace

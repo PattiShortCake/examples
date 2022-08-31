@@ -7,30 +7,33 @@
         <processorPath useClasspath="false">
           <entry name="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.projectlombok/lombok/1.18.24/13a394eed5c4f9efb2a6d956e2086f1d81e857d9/lombok-1.18.24.jar" />
         </processorPath>
-        <module name="example.aws.test" />
+        <module name="example.oauth2-spring-cloud-gateway.test" />
         <module name="example.graphql.test" />
         <module name="example.graphql.testFixtures" />
         <module name="example.template.testFixtures" />
-        <module name="example.aws.testFixtures" />
         <module name="example.oauth2-client.main" />
+        <module name="example.oauth2-spring-cloud-gateway.testFixtures" />
         <module name="example.spring-graphql.test" />
         <module name="example.aws.main" />
-        <module name="example.oauth2-client.test" />
-        <module name="example.spring-graphql.main" />
         <module name="example.ignite.testFixtures" />
         <module name="example.spring-kafka.test" />
         <module name="example.spring-kafka.testFixtures" />
-        <module name="example.ignite.test" />
-        <module name="example.oauth2-client.testFixtures" />
         <module name="example.graphql.main" />
-        <module name="example.spring-cloud-discovery.testFixtures" />
-        <module name="example.template.test" />
         <module name="example.spring-cloud-discovery.main" />
         <module name="example.spring-graphql.testFixtures" />
         <module name="example.ignite.main" />
+        <module name="example.template.main" />
+        <module name="example.aws.test" />
+        <module name="example.aws.testFixtures" />
+        <module name="example.oauth2-spring-cloud-gateway.main" />
+        <module name="example.oauth2-client.test" />
+        <module name="example.spring-graphql.main" />
+        <module name="example.ignite.test" />
+        <module name="example.oauth2-client.testFixtures" />
+        <module name="example.spring-cloud-discovery.testFixtures" />
+        <module name="example.template.test" />
         <module name="example.spring-kafka.main" />
         <module name="example.spring-cloud-discovery.test" />
-        <module name="example.template.main" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel target="11">
