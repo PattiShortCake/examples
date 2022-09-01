@@ -3,6 +3,10 @@ server:
 spring:
   application:
     name: oauth2-client
+  cache:
+    cache-names: oauth-opaque-tokens
+    caffeine:
+      spec: maximumSize=500,expireAfterWrite=5m
   graphql:
     schema:
       printer:

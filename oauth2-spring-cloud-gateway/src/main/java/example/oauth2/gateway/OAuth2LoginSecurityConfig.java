@@ -1,7 +1,10 @@
 package example.oauth2.gateway;
 
+import com.github.benmanes.caffeine.cache.AsyncCache;
+import com.github.benmanes.caffeine.cache.Caffeine;
 import java.util.Collection;
 import java.util.List;
+import java.util.concurrent.CompletableFuture;
 import java.util.stream.Collectors;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.autoconfigure.security.oauth2.resource.OAuth2ResourceServerProperties;
@@ -19,8 +22,8 @@ import org.springframework.security.oauth2.core.OAuth2AuthenticatedPrincipal;
 import org.springframework.security.oauth2.core.OAuth2TokenIntrospectionClaimNames;
 import org.springframework.security.oauth2.jose.jws.SignatureAlgorithm;
 import org.springframework.security.oauth2.jwt.JwtDecoderFactory;
+import org.springframework.security.oauth2.server.resource.introspection.NimbusReactiveOpaqueTokenIntrospector;
 import org.springframework.security.oauth2.server.resource.introspection.ReactiveOpaqueTokenIntrospector;
-import org.springframework.security.oauth2.server.resource.introspection.SpringReactiveOpaqueTokenIntrospector;
 import org.springframework.security.web.server.SecurityWebFilterChain;
 import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.reactive.CorsWebFilter;
@@ -41,29 +44,10 @@ public class OAuth2LoginSecurityConfig {
         )
 
         .oauth2ResourceServer(spec -> spec.opaqueToken())
-//        .oauth2ResourceServer(spec -> spec.jwt())
 
-        .oauth2Login(
-            Customizer.withDefaults()
-//            .userInfoEndpoint(userInfo -> userInfo
-//                .userAuthoritiesMapper(userAuthoritiesMapper())
-//
-//            )
-            // For OAuth 2.0 UserService
-//            .userInfoEndpoint(userInfo -> userInfo
-//                .userService(this.oauth2UserService()
-//            )
-            // For OpenID Connect 1.0 UserService
-//            .userInfoEndpoint(userInfo -> userInfo
-//                .oidcUserService(this.oidcUserService()
-//            )
-        )
+        .oauth2Login(Customizer.withDefaults())
 
-//        .oauth2Client(Customizer.withDefaults())
-
-//        .cors(cors -> cors.configurationSource(corsConfigurationSource()))
-
-        .csrf(c -> c.disable())
+//        .csrf(c -> c.disable())
     ;
 
     log.info("Configured " + OAuth2LoginSecurityConfig.class);
@@ -88,12 +72,6 @@ public class OAuth2LoginSecurityConfig {
   }
 
   @Bean
-  public CustomAuthoritiesOpaqueTokenIntrospector opaqueTokenIntrospector(
-      final OAuth2ResourceServerProperties properties) {
-    return new CustomAuthoritiesOpaqueTokenIntrospector(properties);
-  }
-
-  @Bean
   public JwtDecoderFactory<ClientRegistration> idTokenDecoderFactory() {
     // Changing ID Token Signature Verification
     final OidcIdTokenDecoderFactory idTokenDecoderFactory = new OidcIdTokenDecoderFactory();
@@ -101,25 +79,42 @@ public class OAuth2LoginSecurityConfig {
     return idTokenDecoderFactory;
   }
 
+  @Bean
+  public CustomAuthoritiesOpaqueTokenIntrospector opaqueTokenIntrospector(
+      final OAuth2ResourceServerProperties properties) {
+    return new CustomAuthoritiesOpaqueTokenIntrospector(properties);
+  }
+
   private static class CustomAuthoritiesOpaqueTokenIntrospector implements
       ReactiveOpaqueTokenIntrospector {
 
     private final ReactiveOpaqueTokenIntrospector delegate;
+    private final AsyncCache<String, OAuth2AuthenticatedPrincipal> cache = Caffeine.newBuilder()
+        .buildAsync();
 
     public CustomAuthoritiesOpaqueTokenIntrospector(
         final OAuth2ResourceServerProperties properties) {
       final OAuth2ResourceServerProperties.Opaquetoken opaqueToken = properties.getOpaquetoken();
-      delegate = new SpringReactiveOpaqueTokenIntrospector(opaqueToken.getIntrospectionUri(),
+      delegate = new NimbusReactiveOpaqueTokenIntrospector(opaqueToken.getIntrospectionUri(),
           opaqueToken.getClientId(),
           opaqueToken.getClientSecret());
     }
 
     @Override
     public Mono<OAuth2AuthenticatedPrincipal> introspect(final String token) {
-      return delegate.introspect(token)
+      final CompletableFuture<OAuth2AuthenticatedPrincipal> future = cache.get(
+          token, (s, e) -> introspectAsFuture(s));
+
+      return Mono.fromFuture(future);
+    }
+
+    private CompletableFuture<OAuth2AuthenticatedPrincipal> introspectAsFuture(final String token) {
+      return delegate.introspect(
+              token)
           .map(principal -> new DefaultOAuth2AuthenticatedPrincipal(
               principal.getName(), principal.getAttributes(), extractAuthorities(principal)))
-          ;
+          .map(OAuth2AuthenticatedPrincipal.class::cast)
+          .toFuture();
     }
 
     private Collection<GrantedAuthority> extractAuthorities(

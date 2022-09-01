@@ -4,6 +4,10 @@ server:
 spring:
   application:
     name: Spring Cloud Gateway w/ OIDC Example
+  cache:
+    cache-names: oauth-opaque-tokens
+    caffeine:
+      spec: maximumSize=500,expireAfterWrite=5m
   cloud:
     gateway:
       default-filters:

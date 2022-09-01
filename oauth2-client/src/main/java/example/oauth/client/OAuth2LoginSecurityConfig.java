@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.autoconfigure.security.oauth2.resource.OAuth2ResourceServerProperties;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.Customizer;
@@ -20,12 +21,12 @@ import org.springframework.security.oauth2.core.OAuth2AuthenticatedPrincipal;
 import org.springframework.security.oauth2.core.OAuth2TokenIntrospectionClaimNames;
 import org.springframework.security.oauth2.jose.jws.SignatureAlgorithm;
 import org.springframework.security.oauth2.jwt.JwtDecoderFactory;
+import org.springframework.security.oauth2.server.resource.introspection.NimbusOpaqueTokenIntrospector;
 import org.springframework.security.oauth2.server.resource.introspection.OpaqueTokenIntrospector;
-import org.springframework.security.oauth2.server.resource.introspection.SpringOpaqueTokenIntrospector;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.web.cors.CorsConfiguration;
-import org.springframework.web.cors.CorsConfigurationSource;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
+import org.springframework.web.filter.CorsFilter;
 
 @EnableWebSecurity
 @Configuration
@@ -58,24 +59,27 @@ public class OAuth2LoginSecurityConfig {
 //            )
         )
 
-        .cors(cors -> cors.configurationSource(corsConfigurationSource()))
+//        .cors(cors -> cors.configurationSource(corsConfigurationSource()))
 
-        .csrf(c -> c.disable())
+//        .csrf(c -> c.disable())
     ;
 
     return http.build();
   }
 
-  private CorsConfigurationSource corsConfigurationSource() {
-    final UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
+  //  @Bean
+  public CorsFilter corsConfigurationSource() {
     final CorsConfiguration config = new CorsConfiguration();
     config.addAllowedHeader(CorsConfiguration.ALL);
     config.addAllowedMethod(CorsConfiguration.ALL);
     config.addAllowedOriginPattern(CorsConfiguration.ALL);
 
-    config.setAllowCredentials(true);
+//    config.setAllowCredentials(true);
+
+    final UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
     source.registerCorsConfiguration("/**", config);
-    return source;
+
+    return new CorsFilter(source);
   }
 
   @Bean
@@ -99,12 +103,13 @@ public class OAuth2LoginSecurityConfig {
     public CustomAuthoritiesOpaqueTokenIntrospector(
         final OAuth2ResourceServerProperties properties) {
       final OAuth2ResourceServerProperties.Opaquetoken opaqueToken = properties.getOpaquetoken();
-      delegate = new SpringOpaqueTokenIntrospector(opaqueToken.getIntrospectionUri(),
+      delegate = new NimbusOpaqueTokenIntrospector(opaqueToken.getIntrospectionUri(),
           opaqueToken.getClientId(),
           opaqueToken.getClientSecret());
     }
 
     @Override
+    @Cacheable("oauth-opaque-tokens")
     public OAuth2AuthenticatedPrincipal introspect(final String token) {
       final OAuth2AuthenticatedPrincipal principal = delegate.introspect(token);
       return new DefaultOAuth2AuthenticatedPrincipal(
