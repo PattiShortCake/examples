@@ -12,7 +12,4 @@ spring:
         provider:
           okta:
             issuer-uri: https://dev-2322327.okta.com
-logging:
-  level:
-    org.springframework: debug
-    org.springframework.cloud.gateway: trace
+

@@ -9,7 +9,7 @@ import {OidcSecurityService} from "angular-auth-oidc-client";
 })
 export class NameRestfulService {
 
-  url = 'http://localhost:8080/name'
+  url = 'http://localhost:4200/api/name'
 
   constructor(
     private http: HttpClient,
@@ -31,7 +31,7 @@ export class NameRestfulService {
       /*...*/
     });
 
-    return this.oidcSecurityService.getIdToken()
+    return this.oidcSecurityService.getAccessToken()
     .pipe(
       map((token) =>
         new HttpHeaders({

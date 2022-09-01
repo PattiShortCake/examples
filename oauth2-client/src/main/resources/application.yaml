@@ -16,24 +16,24 @@ spring:
 
   security:
     oauth2:
-      #      client:
-      #        registration:
-      #          okta:
-      #            scope:
-      #              - openid
-      #              - email
-      #            #client-id:
-      #            #client-secret:
-      #        provider:
-      #          okta:
-      #            issuer-uri: https://dev-2322327.okta.com
+      client:
+        registration:
+          okta:
+            scope:
+              - openid
+              - email
+            #client-id:
+            #client-secret:
+        provider:
+          okta:
+            issuer-uri: https://dev-2322327.okta.com
       resourceserver:
         opaquetoken:
           introspection-uri: https://dev-2322327.okta.com/oauth2/v1/introspect
         #client-id:
         #client-secret:
-        jwt:
-          issuer-uri: https://dev-2322327.okta.com
+#        jwt:
+#          issuer-uri: https://dev-2322327.okta.com
 logging:
   level:
     root: debug

@@ -5,7 +5,7 @@ import {HttpLink} from 'apollo-angular/http';
 import {setContext} from "@apollo/client/link/context";
 import {OidcSecurityService} from "angular-auth-oidc-client";
 
-const uri = 'http://localhost:8080/graphql'; // <-- add the URL of the GraphQL server here
+const uri = 'http://localhost:4200/graphql'; // <-- add the URL of the GraphQL server here
 export function createApollo(
   httpLink: HttpLink,
   oidcSecurityService: OidcSecurityService

@@ -1,19 +1,31 @@
 package example.oauth2.gateway;
 
+import java.util.Collection;
+import java.util.List;
+import java.util.stream.Collectors;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.boot.autoconfigure.security.oauth2.resource.OAuth2ResourceServerProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.Customizer;
 import org.springframework.security.config.annotation.web.reactive.EnableWebFluxSecurity;
 import org.springframework.security.config.web.server.ServerHttpSecurity;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.oauth2.client.oidc.authentication.OidcIdTokenDecoderFactory;
 import org.springframework.security.oauth2.client.registration.ClientRegistration;
+import org.springframework.security.oauth2.core.DefaultOAuth2AuthenticatedPrincipal;
+import org.springframework.security.oauth2.core.OAuth2AuthenticatedPrincipal;
+import org.springframework.security.oauth2.core.OAuth2TokenIntrospectionClaimNames;
 import org.springframework.security.oauth2.jose.jws.SignatureAlgorithm;
 import org.springframework.security.oauth2.jwt.JwtDecoderFactory;
+import org.springframework.security.oauth2.server.resource.introspection.ReactiveOpaqueTokenIntrospector;
+import org.springframework.security.oauth2.server.resource.introspection.SpringReactiveOpaqueTokenIntrospector;
 import org.springframework.security.web.server.SecurityWebFilterChain;
 import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.reactive.CorsWebFilter;
 import org.springframework.web.cors.reactive.UrlBasedCorsConfigurationSource;
+import reactor.core.publisher.Mono;
 
 @EnableWebFluxSecurity
 @Configuration
@@ -28,7 +40,7 @@ public class OAuth2LoginSecurityConfig {
             .anyExchange().authenticated()
         )
 
-//        .oauth2ResourceServer(spec -> spec.opaqueToken())
+        .oauth2ResourceServer(spec -> spec.opaqueToken())
 //        .oauth2ResourceServer(spec -> spec.jwt())
 
         .oauth2Login(
@@ -75,11 +87,11 @@ public class OAuth2LoginSecurityConfig {
     return new CorsWebFilter(source);
   }
 
-  //  @Bean
-//  public CustomAuthoritiesOpaqueTokenIntrospector opaqueTokenIntrospector(
-//      final OAuth2ResourceServerProperties properties) {
-//    return new CustomAuthoritiesOpaqueTokenIntrospector(properties);
-//  }
+  @Bean
+  public CustomAuthoritiesOpaqueTokenIntrospector opaqueTokenIntrospector(
+      final OAuth2ResourceServerProperties properties) {
+    return new CustomAuthoritiesOpaqueTokenIntrospector(properties);
+  }
 
   @Bean
   public JwtDecoderFactory<ClientRegistration> idTokenDecoderFactory() {
@@ -89,34 +101,34 @@ public class OAuth2LoginSecurityConfig {
     return idTokenDecoderFactory;
   }
 
-//  private static class CustomAuthoritiesOpaqueTokenIntrospector implements
-//      ReactiveOpaqueTokenIntrospector {
-//
-//    private final ReactiveOpaqueTokenIntrospector delegate;
-//
-//    public CustomAuthoritiesOpaqueTokenIntrospector(
-//        final OAuth2ResourceServerProperties properties) {
-//      final OAuth2ResourceServerProperties.Opaquetoken opaqueToken = properties.getOpaquetoken();
-//      delegate = new SpringReactiveOpaqueTokenIntrospector(opaqueToken.getIntrospectionUri(),
-//          opaqueToken.getClientId(),
-//          opaqueToken.getClientSecret());
-//    }
-//
-//    @Override
-//    public Mono<OAuth2AuthenticatedPrincipal> introspect(final String token) {
-//      return delegate.introspect(token)
-//          .map(principal -> new DefaultOAuth2AuthenticatedPrincipal(
-//              principal.getName(), principal.getAttributes(), extractAuthorities(principal)))
-//          ;
-//    }
-//
-//    private Collection<GrantedAuthority> extractAuthorities(
-//        final OAuth2AuthenticatedPrincipal principal) {
-//      final List<String> scopes = principal.getAttribute(OAuth2TokenIntrospectionClaimNames.SCOPE);
-//      log.info("These scopes[{}] would be mapped to GrantedAuthorities here", scopes);
-//      return scopes.stream()
-//          .map(SimpleGrantedAuthority::new)
-//          .collect(Collectors.toList());
-//    }
-//  }
+  private static class CustomAuthoritiesOpaqueTokenIntrospector implements
+      ReactiveOpaqueTokenIntrospector {
+
+    private final ReactiveOpaqueTokenIntrospector delegate;
+
+    public CustomAuthoritiesOpaqueTokenIntrospector(
+        final OAuth2ResourceServerProperties properties) {
+      final OAuth2ResourceServerProperties.Opaquetoken opaqueToken = properties.getOpaquetoken();
+      delegate = new SpringReactiveOpaqueTokenIntrospector(opaqueToken.getIntrospectionUri(),
+          opaqueToken.getClientId(),
+          opaqueToken.getClientSecret());
+    }
+
+    @Override
+    public Mono<OAuth2AuthenticatedPrincipal> introspect(final String token) {
+      return delegate.introspect(token)
+          .map(principal -> new DefaultOAuth2AuthenticatedPrincipal(
+              principal.getName(), principal.getAttributes(), extractAuthorities(principal)))
+          ;
+    }
+
+    private Collection<GrantedAuthority> extractAuthorities(
+        final OAuth2AuthenticatedPrincipal principal) {
+      final List<String> scopes = principal.getAttribute(OAuth2TokenIntrospectionClaimNames.SCOPE);
+      log.info("These scopes[{}] would be mapped to GrantedAuthorities here", scopes);
+      return scopes.stream()
+          .map(SimpleGrantedAuthority::new)
+          .collect(Collectors.toList());
+    }
+  }
 }
