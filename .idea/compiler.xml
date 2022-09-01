@@ -40,6 +40,10 @@
       <module name="example.aws.intTest" target="17" />
       <module name="example.graphql.intTest" target="17" />
       <module name="example.oauth2" target="17" />
+      <module name="example.oauth2-spring-cloud-gateway" target="17" />
+      <module name="example.oauth2-spring-cloud-gateway.main" target="17" />
+      <module name="example.oauth2-spring-cloud-gateway.test" target="17" />
+      <module name="example.oauth2-spring-cloud-gateway.testFixtures" target="17" />
       <module name="example.oauth2.main" target="17" />
       <module name="example.oauth2.test" target="17" />
       <module name="example.oauth2.testFixtures" target="17" />
